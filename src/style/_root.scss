@@ -6,25 +6,52 @@
   font-size: 15px;
   -webkit-appearance: none;
 }
+
 html {
   scroll-behavior: smooth;
   max-width: 2560px;
   height: 100%;
   margin: 0 auto;
 }
+
 body {
   -webkit-text-size-adjust: 100%;
   background-color: #ffffff;
 }
+
 main {
   padding: 0 15px;
 }
+
 a {
   text-decoration: none;
 }
 
+input {
+  height: 2em;
+  width: 100%;
+  margin-bottom: 50px;
+  border: none;
+  border-bottom: 1px solid $base-color;
+  font-size: 15px;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+button {
+  padding: 5px 10px;
+  border: 1px solid $base-color;
+  border-radius: 10px;
+
+  &:focus {
+    outline: none;
+  }
+}
+
 .card {
-  box-shadow: 0px 0px 10px black;
+  box-shadow: 0px 0px 5px black;
   border-radius: 10px;
 }
 .center {

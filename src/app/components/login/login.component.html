@@ -1,1 +1,24 @@
-<p>login works!</p>
+<div class="login-Main">
+  <!-- <div class="login-Main_Content"> -->
+  <div class="login-Main_Card card">
+    <div class="login-Main_Border"></div>
+    <div class="login-Main_Form">
+      <form [formGroup]="loginForm">
+        <div class="login-Main_Email">
+          <input type="text" formControlName="email" placeholder="Email" />
+        </div>
+        <div class="login-Main_Password">
+          <input
+            type="text"
+            formControlName="password"
+            placeholder="Password"
+          />
+        </div>
+        <div class="login-Main_Button">
+          <button>????</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <!-- </div> -->
+</div>

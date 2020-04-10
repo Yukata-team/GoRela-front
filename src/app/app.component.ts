@@ -1,4 +1,9 @@
-import { Router, NavigationStart } from '@angular/router';
+import {
+  Router,
+  NavigationStart,
+  NavigationEnd,
+  RouterEvent,
+} from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,7 +12,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  isMenuHidden: boolean = false;
+  isMenuHidden: boolean;
 
   constructor(private router: Router) {}
 
@@ -15,6 +20,15 @@ export class AppComponent implements OnInit {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationStart && event.url === '/') {
         this.isMenuHidden = true;
+      } else if (event instanceof NavigationStart && event.url === '/login') {
+        this.isMenuHidden = true;
+      } else if (
+        event instanceof NavigationStart &&
+        event.url === '/register'
+      ) {
+        this.isMenuHidden = true;
+      } else if (event instanceof NavigationStart && event.url) {
+        this.isMenuHidden = false;
       }
     });
   }
