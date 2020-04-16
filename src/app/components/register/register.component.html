@@ -1,1 +1,35 @@
-<p>register works!</p>
+<div class="register-Main center">
+  <!-- <div class="register-Main_Content"> -->
+  <div class="register-Main_Card card">
+    <div class="register-Main_Border"></div>
+    <div class="register-Main_Form">
+      <form [formGroup]="registerForm">
+        <div class="register-Main_Email">
+          <input
+            type="text"
+            formControlName="email"
+            placeholder="メールアドレス"
+          />
+        </div>
+        <div class="register-Main_Password">
+          <input
+            type="text"
+            formControlName="password"
+            placeholder="パスワード"
+          />
+        </div>
+        <div class="register-Main_Password">
+          <input
+            type="text"
+            formControlName="password_confirm"
+            placeholder="パスワード(確認用)"
+          />
+        </div>
+        <div class="register-Main_Button">
+          <button (click)="add()">新規登録</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <!-- </div> -->
+</div>

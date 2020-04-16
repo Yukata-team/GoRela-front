@@ -1,3 +1,4 @@
+import { ListComponent } from './components/list/list.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { TopComponent } from './components/top/top.component';
@@ -16,6 +17,10 @@ const routes: Routes = [
   {
     path: 'register',
     component: RegisterComponent,
+  },
+  {
+    path: 'list',
+    component: ListComponent,
   },
 ];
 

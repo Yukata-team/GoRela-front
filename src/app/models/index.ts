@@ -5,6 +5,7 @@ export interface User {
   password: string;
   introduction?: string;
   image?: string;
+  is_login: boolean;
   created_at?: Date;
   updated_at?: Date;
 }

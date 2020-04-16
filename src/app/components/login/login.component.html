@@ -1,21 +1,25 @@
-<div class="login-Main">
+<div class="login-Main center">
   <!-- <div class="login-Main_Content"> -->
   <div class="login-Main_Card card">
     <div class="login-Main_Border"></div>
     <div class="login-Main_Form">
       <form [formGroup]="loginForm">
         <div class="login-Main_Email">
-          <input type="text" formControlName="email" placeholder="Email" />
+          <input
+            type="text"
+            formControlName="email"
+            placeholder="メールアドレス"
+          />
         </div>
         <div class="login-Main_Password">
           <input
             type="text"
             formControlName="password"
-            placeholder="Password"
+            placeholder="パスワード"
           />
         </div>
         <div class="login-Main_Button">
-          <button>ログイン</button>
+          <button (click)="login()">ログイン</button>
         </div>
       </form>
     </div>

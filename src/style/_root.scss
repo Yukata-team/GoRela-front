@@ -30,13 +30,22 @@ a {
 input {
   height: 2em;
   width: 100%;
-  margin-bottom: 50px;
+  margin-bottom: 5em;
   border: none;
-  border-bottom: 1px solid $base-color;
-  font-size: 15px;
+  border-bottom: 1px solid $placeholder-color-1;
+  font-size: 12px;
+  background: linear-gradient($base-color, $base-color) 0 calc(100% + 1px) / 0px
+    1px no-repeat;
+  transition: background-size 0.5s;
+
+  @include mobile {
+    font-size: 8px;
+  }
 
   &:focus {
     outline: none;
+    background-size: 100% 1px;
+    border-bottom: 1px solid #00000000;
   }
 }
 
@@ -44,6 +53,11 @@ button {
   padding: 5px 10px;
   border: 1px solid $base-color;
   border-radius: 10px;
+  cursor: pointer;
+
+  @include mobile {
+    font-size: 10px;
+  }
 
   &:focus {
     outline: none;
@@ -54,6 +68,7 @@ button {
   box-shadow: 0px 0px 5px black;
   border-radius: 10px;
 }
+
 .center {
   display: flex;
   align-items: center;
