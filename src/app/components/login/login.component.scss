@@ -1,13 +1,18 @@
 @import "../../../style/variable";
+@import "../../../style/mixin";
 .login-Main {
   height: 100vh;
-  padding: 25vh 0;
   &_Card {
     position: relative;
-    height: 100%;
-    width: 40%;
-    margin: 0 auto;
-    padding: 80px 100px;
+    height: 350px;
+    width: 500px;
+    padding: 70px 100px;
+
+    @include mobile {
+      height: 250px;
+      width: 300px;
+      padding: 40px 50px;
+    }
   }
 
   &_Border {
@@ -18,10 +23,29 @@
     width: 10px;
     border-right: 1px solid $base-color;
     border-left: 1px solid $base-color;
+
+    @include mobile {
+      left: 25px;
+      width: 7px;
+    }
   }
 
   &_Form {
     height: 100%;
     padding: 0 10%;
+    ::placeholder {
+      color: $placeholder-color-1;
+    }
+  }
+  &_Button {
+    button {
+      color: $base-color;
+      background-color: #fff;
+      transition: 0.3s;
+      &:hover {
+        color: #fff;
+        background-color: $base-color;
+      }
+    }
   }
 }
