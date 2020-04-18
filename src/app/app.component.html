@@ -1,6 +1,6 @@
 <ng-container *ngIf="!isMenuHidden">
   <app-menu></app-menu>
 </ng-container>
-<main>
+<main [class.isMenuVisible]="!isMenuHidden">
   <router-outlet #outlet="outlet"></router-outlet>
 </main>

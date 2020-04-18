@@ -1,3 +1,6 @@
+import { RankingComponent } from './components/ranking/ranking.component';
+import { AccountComponent } from './components/account/account.component';
+import { CreateComponent } from './components/create/create.component';
 import { ListComponent } from './components/list/list.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
@@ -21,6 +24,18 @@ const routes: Routes = [
   {
     path: 'list',
     component: ListComponent,
+  },
+  {
+    path: 'create',
+    component: CreateComponent,
+  },
+  {
+    path: 'ranking',
+    component: RankingComponent,
+  },
+  {
+    path: 'account',
+    component: AccountComponent,
   },
 ];
 
