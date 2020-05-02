@@ -33,19 +33,13 @@
   &_Form {
     height: 100%;
     padding: 0 10%;
+
+    input {
+      margin-bottom: 5em;
+    }
+
     ::placeholder {
       color: $placeholder-color-1;
-    }
-  }
-  &_Button {
-    button {
-      color: $base-color;
-      background-color: #fff;
-      transition: 0.3s;
-      &:hover {
-        color: #fff;
-        background-color: $base-color;
-      }
     }
   }
 }
