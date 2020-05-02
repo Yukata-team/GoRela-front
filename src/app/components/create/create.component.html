@@ -1,1 +1,133 @@
-<p>create works!</p>
+<div class="create-Container">
+  <div class="create-Container_Inner">
+    <form autocomplete="off">
+      <div class="create-Container_Box card">
+        <div class="create-Container_Title">
+          <input
+            [(ngModel)]="postTitle"
+            type="text"
+            name="postTitle"
+            placeholder="タイトル"
+            required
+          />
+        </div>
+        <div class="create-Container_Content">
+          <div class="create-Container_Limit">
+            <label for="postLimit">期限：</label>
+            <input
+              [(ngModel)]="postLimit"
+              id="postLimit"
+              type="date"
+              name="postLimit"
+            />
+          </div>
+          <div class="create-Container_Tasks">
+            <div class="create-Container_Task">
+              <div class="create-Container_Checkbox"></div>
+              <input
+                [(ngModel)]="tasks[0]"
+                type="text"
+                name="name_0"
+                placeholder="タスクを入力"
+                required
+              />
+            </div>
+            <div class="create-Container_Task" *ngIf="tasks[0] || tasks[1]">
+              <div class="create-Container_Checkbox"></div>
+              <input
+                [(ngModel)]="tasks[1]"
+                type="text"
+                name="name_1"
+                placeholder="タスクを入力"
+              />
+            </div>
+            <div class="create-Container_Task" *ngIf="tasks[1] || tasks[2]">
+              <div class="create-Container_Checkbox"></div>
+              <input
+                [(ngModel)]="tasks[2]"
+                type="text"
+                name="name_2"
+                placeholder="タスクを入力"
+              />
+            </div>
+            <div class="create-Container_Task" *ngIf="tasks[2] || tasks[3]">
+              <div class="create-Container_Checkbox"></div>
+              <input
+                [(ngModel)]="tasks[3]"
+                type="text"
+                name="name_3"
+                placeholder="タスクを入力"
+              />
+            </div>
+            <div class="create-Container_Task" *ngIf="tasks[3] || tasks[4]">
+              <div class="create-Container_Checkbox"></div>
+              <input
+                [(ngModel)]="tasks[4]"
+                type="text"
+                name="name_4"
+                placeholder="タスクを入力"
+              />
+            </div>
+            <div class="create-Container_Task" *ngIf="tasks[4] || tasks[5]">
+              <div class="create-Container_Checkbox"></div>
+              <input
+                [(ngModel)]="tasks[5]"
+                type="text"
+                name="name_5"
+                placeholder="タスクを入力"
+              />
+            </div>
+            <div class="create-Container_Task" *ngIf="tasks[5] || tasks[6]">
+              <div class="create-Container_Checkbox"></div>
+              <input
+                [(ngModel)]="tasks[6]"
+                type="text"
+                name="name_6"
+                placeholder="タスクを入力"
+              />
+            </div>
+            <div class="create-Container_Task" *ngIf="tasks[6] || tasks[7]">
+              <div class="create-Container_Checkbox"></div>
+              <input
+                [(ngModel)]="tasks[7]"
+                type="text"
+                name="name_7"
+                placeholder="タスクを入力"
+              />
+            </div>
+            <div class="create-Container_Task" *ngIf="tasks[7] || tasks[8]">
+              <div class="create-Container_Checkbox"></div>
+              <input
+                [(ngModel)]="tasks[8]"
+                type="text"
+                name="name_8"
+                placeholder="タスクを入力"
+              />
+            </div>
+            <div class="create-Container_Task" *ngIf="tasks[8] || tasks[9]">
+              <div class="create-Container_Checkbox"></div>
+              <input
+                [(ngModel)]="tasks[9]"
+                type="text"
+                name="name_9"
+                placeholder="タスクを入力"
+              />
+            </div>
+          </div>
+          <div class="create-Container_Detail">
+            <textarea
+              [(ngModel)]="postDetail"
+              id="postDetail"
+              type="text"
+              name="postDetail"
+              placeholder="詳細"
+            ></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="create-Container_Button">
+        <button (click)="create()">タスクを投稿</button>
+      </div>
+    </form>
+  </div>
+</div>

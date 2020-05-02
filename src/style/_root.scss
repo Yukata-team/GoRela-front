@@ -27,16 +27,17 @@ a {
   text-decoration: none;
 }
 
-input {
+input,
+textarea {
   height: 2em;
   width: 100%;
-  margin-bottom: 5em;
   border: none;
   border-bottom: 1px solid $placeholder-color-1;
   font-size: 12px;
   background: linear-gradient($base-color, $base-color) 0 calc(100% + 1px) / 0px
     1px no-repeat;
   transition: background-size 0.5s;
+  resize: none;
 
   @include mobile {
     font-size: 8px;
@@ -53,6 +54,8 @@ button {
   padding: 5px 10px;
   border: 1px solid $base-color;
   border-radius: 10px;
+  color: $base-color;
+  transition: 0.3s;
   cursor: pointer;
 
   @include mobile {
@@ -62,10 +65,15 @@ button {
   &:focus {
     outline: none;
   }
+
+  &:hover {
+    color: #fff;
+    background-color: $base-color;
+  }
 }
 
 .card {
-  box-shadow: 0px 0px 5px black;
+  box-shadow: 0px 0px 5px $shadow-color;
   border-radius: 10px;
 }
 
