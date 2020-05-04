@@ -28,7 +28,7 @@ export interface Task {
   id: number;
   content: string;
   is_done: boolean;
-  post: Post;
+  post_id: number;
   created_at: Date;
   updated_at: Date;
 }

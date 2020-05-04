@@ -1,3 +1,4 @@
+import { ErrorService } from './error.service';
 import { HttpService } from './http.service';
 import { User } from './../models/index';
 import { Injectable } from '@angular/core';
@@ -11,28 +12,21 @@ import { catchError, map, tap, retry } from 'rxjs/operators';
 export class UserService {
   private url = 'user';
 
-  constructor(private http: HttpService) {}
+  constructor(private http: HttpService, private error: ErrorService) {}
 
   addUser(user: User): Observable<User> {
     user.is_login = true;
     return this.http.post(this.url, user).pipe(
       tap(() => this.log('add user!!!!!')),
-      catchError(this.handleError<any>('cannot addUser'))
+      catchError(this.error.handleError<any>('cannot addUser'))
     );
   }
 
   getUsers(): Observable<User[]> {
     return this.http.get(this.url).pipe(
       tap(() => this.log('get users!!!!!')),
-      catchError(this.handleError<any>('cannot getUsers'))
+      catchError(this.error.handleError<any>('cannot getUsers'))
     );
-  }
-
-  private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-      console.error(error!!!);
-      return of(result as T);
-    };
   }
 
   login(id: number) {

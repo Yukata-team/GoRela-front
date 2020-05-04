@@ -63,10 +63,12 @@ export class RegisterComponent implements OnInit {
       this.registerForm.value.email
     );
 
+    console.log(this.registerForm.value);
     if (!this.registerForm.invalid && !_isExist) {
       this.userService.addUser(this.registerForm.value).subscribe((user) => {
         this.user = user;
         console.log('add!!!!!');
+        console.log(this.user);
         this.log();
       });
 

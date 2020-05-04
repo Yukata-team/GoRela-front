@@ -1,1 +1,37 @@
-<p>menu works!</p>
+<div class="menu-Container center">
+  <div class="menu-Container_Inner">
+    <a
+      [routerLink]="['create']"
+      routerLinkActive="is-active"
+      class="menu-Container_Create card center"
+    >
+      <p>タスク作成</p>
+    </a>
+    <div class="menu-Container_Items card">
+      <a
+        [routerLink]="['list']"
+        routerLinkActive="is-active"
+        class="menu-Container_Item center"
+      >
+        <p>リスト</p>
+      </a>
+      <a
+        [routerLink]="['ranking']"
+        routerLinkActive="is-active"
+        class="menu-Container_Item center"
+      >
+        <p>人気</p>
+      </a>
+      <a
+        [routerLink]="['account']"
+        routerLinkActive="is-active"
+        class="menu-Container_Item center"
+      >
+        <p>アカウント</p>
+      </a>
+      <a [routerLink]="['']" class="menu-Container_Item center">
+        <p>ログアウト</p>
+      </a>
+    </div>
+  </div>
+</div>
