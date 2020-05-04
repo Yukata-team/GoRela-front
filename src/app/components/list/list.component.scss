@@ -1,0 +1,81 @@
+@import "../../../style/variable";
+.list-Container {
+  margin: 0 50px;
+
+  &_Items {
+  }
+
+  &_Item {
+    margin-bottom: 50px;
+  }
+
+  &_Title {
+    height: 3em;
+    padding: 0 10px;
+    background-color: $base-color;
+    border-radius: 5px 5px 0 0;
+    h1 {
+      height: 100%;
+      color: white;
+      line-height: 3em;
+    }
+  }
+
+  &_Limit {
+    padding: 10px 20px;
+    p,
+    span {
+      font-size: 13px;
+      color: $placeholder-color-1;
+    }
+  }
+
+  &_Tasks {
+    padding: 30px;
+  }
+
+  &_Task {
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 20px;
+
+    p {
+      &::before {
+        position: absolute;
+        top: calc(50% - 8px);
+        left: 0;
+        height: 12px;
+        width: 12px;
+        border: 1px solid $base-color;
+        background-color: white;
+        content: "";
+      }
+    }
+  }
+
+  &_ItemBottom {
+    display: flex;
+    align-items: center;
+    margin: 0 30px;
+    padding: 10px 0;
+    p {
+      font-size: 10px;
+      color: $placeholder-color-1;
+    }
+  }
+
+  &_Favorite {
+    margin-right: 20px;
+  }
+
+  &_Comment {
+    p {
+      font-size: 15px;
+    }
+  }
+
+  &_Account {
+    margin-left: auto;
+    margin-right: 20px;
+  }
+}

@@ -15,10 +15,16 @@
   &_LeftCard {
     width: 60%;
     margin-right: 5%;
+    transition: 0.3s;
+
     h1 {
       color: #fff;
       font-size: 40px;
       line-height: 2em;
+    }
+
+    &:hover {
+      box-shadow: 0 0 15px #00000044;
     }
   }
 
