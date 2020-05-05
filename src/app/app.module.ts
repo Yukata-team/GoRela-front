@@ -17,6 +17,7 @@ import { CommentsComponent } from './components/comments/comments.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RankingComponent } from './components/ranking/ranking.component';
+import { SearchComponent } from './components/search/search.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { RankingComponent } from './components/ranking/ranking.component';
     PostComponent,
     CommentsComponent,
     RankingComponent,
+    SearchComponent,
   ],
   imports: [
     BrowserModule,

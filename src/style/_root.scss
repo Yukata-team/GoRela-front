@@ -48,6 +48,10 @@ textarea {
     background-size: 100% 1px;
     border-bottom: 1px solid #00000000;
   }
+
+  &::placeholder {
+    color: $placeholder-color-1;
+  }
 }
 
 button {

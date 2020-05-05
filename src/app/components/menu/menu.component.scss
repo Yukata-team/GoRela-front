@@ -15,7 +15,7 @@
     transition: 0.3s;
 
     &:hover {
-      box-shadow: 0 0 10px #00000044;
+      box-shadow: 0 0 10px $shadow-color;
     }
   }
 
@@ -31,7 +31,7 @@
     transition: 0.3s;
 
     &:hover {
-      box-shadow: 0 0 5px #00000044;
+      box-shadow: 0 0 5px $shadow-color;
     }
 
     &:not(:last-child) {
