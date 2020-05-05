@@ -1,0 +1,38 @@
+@import "../../../style/variable";
+.search-Container {
+  &_Form {
+    position: relative;
+    margin: 50px 0;
+  }
+
+  &_Input {
+    height: 3em;
+    padding: 0 50px 0 20px;
+    border-radius: 2em;
+    border: none;
+  }
+
+  &_Submit {
+    position: absolute;
+    height: 25px;
+    width: 25px;
+    top: 5px;
+    right: 20px;
+    padding: 0;
+    border: none;
+    color: $sub-color;
+    font-size: 19px;
+    cursor: pointer;
+
+    &::before {
+      font-family: "Font Awesome 5 Free";
+      content: "\f002";
+      font-weight: 900;
+    }
+
+    &:hover {
+      background: none;
+      color: $placeholder-color-1;
+    }
+  }
+}
