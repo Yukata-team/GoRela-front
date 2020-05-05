@@ -1,3 +1,4 @@
+import { DetailComponent } from './components/detail/detail.component';
 import { RankingComponent } from './components/ranking/ranking.component';
 import { AccountComponent } from './components/account/account.component';
 import { CreateComponent } from './components/create/create.component';
@@ -24,6 +25,10 @@ const routes: Routes = [
   {
     path: 'list',
     component: ListComponent,
+  },
+  {
+    path: 'detail/:id',
+    component: DetailComponent,
   },
   {
     path: 'create',

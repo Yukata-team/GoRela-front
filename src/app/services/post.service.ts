@@ -20,7 +20,7 @@ export class PostService {
     );
   }
 
-  getPost(id: number): Observable<Post> {
+  getPost(id: string): Observable<Post> {
     return this.http.get(this.url, id).pipe(
       tap(() => console.log('getPost')),
       catchError(this.error.handleError<any>('cannot getPost'))

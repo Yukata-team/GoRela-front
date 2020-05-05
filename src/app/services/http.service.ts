@@ -13,7 +13,7 @@ export class HttpService {
 
   constructor(private http: HttpClient) {}
 
-  post<T>(url: string, body: any, id?: number): Observable<any> {
+  post<T>(url: string, body: any, id?: string): Observable<any> {
     if (id) {
       return this.http.post(
         `${this.apiUrl}/${url}/${id}/`,
@@ -25,7 +25,7 @@ export class HttpService {
     }
   }
 
-  get<T>(url: string, id?: number): Observable<any> {
+  get<T>(url: string, id?: string): Observable<any> {
     if (id) {
       return this.http.get<T>(`${this.apiUrl}/${url}/${id}/`, this.httpOptions);
     } else {

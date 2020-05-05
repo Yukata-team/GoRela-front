@@ -29,7 +29,7 @@ export class UserService {
     );
   }
 
-  login(id: number) {
+  login(id: string) {
     this.http.post(this.url, { is_login: true }, id);
   }
 
