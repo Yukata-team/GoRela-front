@@ -1,1 +1,42 @@
-<p>detail works!</p>
+<div class="detail-Container">
+  <div class="detail-Container_Item card">
+    <div class="detail-Container_Title">
+      <h1>{{ post.title }}</h1>
+    </div>
+    <div class="detail-Container_Detail">
+      <p>{{ post.detail }}</p>
+    </div>
+    <div class="detail-Container_Limit">
+      <p>
+        期限&nbsp;:
+        <ng-container *ngIf="post.limit">
+          <span>{{ post.limit | date: "yyyy/MM/dd" }}</span>
+        </ng-container>
+        <ng-container *ngIf="!post.limit">
+          <span>-</span>
+        </ng-container>
+      </p>
+    </div>
+    <div class="detail-Container_Tasks">
+      <ng-container *ngFor="let task of tasks">
+        <div class="detail-Container_Task">
+          <p>{{ task.content }}</p>
+        </div>
+      </ng-container>
+    </div>
+    <div class="detail-Container_ItemBottom">
+      <div class="detail-Container_Favorite">
+        <p>いいね</p>
+      </div>
+      <div class="detail-Container_Comment">
+        <p class="far fa-comment-dots"></p>
+      </div>
+      <div class="detail-Container_Account">
+        <p>あ</p>
+      </div>
+      <div class="detail-Container_Date">
+        <p>{{ post.created_at | date: "yyyy/MM/dd hh:mm" }}</p>
+      </div>
+    </div>
+  </div>
+</div>

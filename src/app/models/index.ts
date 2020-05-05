@@ -18,6 +18,7 @@ export interface Relation {
 export interface Post {
   id: number;
   title: string;
+  detail: string;
   limit: Date;
   user: User;
   created_at: Date;

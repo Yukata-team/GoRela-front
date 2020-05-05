@@ -1,12 +1,19 @@
 @import "../../../style/variable";
 .list-Container {
   margin: 0 50px;
+  max-width: $post-max-width;
 
   &_Items {
   }
 
   &_Item {
     margin-bottom: 50px;
+    cursor: pointer;
+    transition: 0.3s;
+
+    &:hover {
+      box-shadow: 0 0 15px $shadow-color;
+    }
   }
 
   &_Title {
@@ -26,7 +33,7 @@
     p,
     span {
       font-size: 13px;
-      color: $placeholder-color-1;
+      color: $sub-color;
     }
   }
 
@@ -60,7 +67,7 @@
     padding: 10px 0;
     p {
       font-size: 10px;
-      color: $placeholder-color-1;
+      color: $sub-color;
     }
   }
 
