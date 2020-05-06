@@ -1,1 +1,36 @@
-<p>comments works!</p>
+<div class="comments-Container">
+  <div class="comments-Container_Create card">
+    <form (ngSubmit)="create()" autocomplete="off">
+      <input
+        [(ngModel)]="commentContent"
+        placeholder="コメントを書く"
+        name="comment"
+        type="text"
+      />
+      <button class="far fa-paper-plane"></button>
+    </form>
+  </div>
+  <div class="comments-Container_Items">
+    <ng-container *ngFor="let comment of comments">
+      <div class="comments-Container_Item card">
+        <div class="comments-Container_Content">
+          <p>{{ comment.content }}</p>
+        </div>
+        <div class="comments-Container_ItemBottom">
+          <div class="comments-Container_Favorite">
+            <p>いいね</p>
+          </div>
+          <div class="comments-Container_Comment">
+            <p class="far fa-comment-dots"></p>
+          </div>
+          <div class="comments-Container_Account">
+            <p>あ</p>
+          </div>
+          <div class="comments-Container_Date">
+            <p>{{ comment.created_at | date: "yyyy/MM/dd hh:mm" }}</p>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>
