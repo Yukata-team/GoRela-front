@@ -43,8 +43,8 @@ export interface Favorite {
 
 export interface Comment {
   content: string;
-  user: User;
-  post: Post;
+  user_id: number;
+  post_id: number;
   created_at: Date;
   updated_at: Date;
 }
