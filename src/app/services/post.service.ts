@@ -9,7 +9,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class PostService {
-  private url = 'post';
+  private url = 'posts';
 
   constructor(private http: HttpService, private error: ErrorService) {}
 

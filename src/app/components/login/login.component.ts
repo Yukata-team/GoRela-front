@@ -1,3 +1,5 @@
+import { HttpService } from './../../services/http.service';
+import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { UserService } from './../../services/user.service';
 import { User } from './../../models/index';
@@ -10,7 +12,6 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  users: User[];
   loginForm = this.fb.group({
     email: ['', Validators.required],
     password: ['', Validators.required],
@@ -19,23 +20,21 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private userService: UserService,
-    private router: Router
+    private router: Router,
+    private http: HttpService
   ) {}
 
-  ngOnInit(): void {
-    this.userService.getUsers().subscribe((users: User[]) => {
-      this.users = users;
-    });
-  }
+  ngOnInit(): void {}
 
   login() {
-    let _isExist = this.userService.isExist(
-      this.users,
-      this.loginForm.value.email,
-      this.loginForm.value.password
-    );
-    if (_isExist) {
-      this.router.navigate(['list']);
+    if (!this.loginForm.invalid) {
+      this.userService.login(this.loginForm.value).subscribe((res) => {
+        console.log(res);
+        localStorage.setItem('access_token', res.token);
+        this.http.updateToken(localStorage.getItem('access_token'));
+        console.log(localStorage.getItem('access_token'));
+        this.router.navigate(['list']);
+      });
     }
   }
 }
