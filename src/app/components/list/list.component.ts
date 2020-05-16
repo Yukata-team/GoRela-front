@@ -1,5 +1,6 @@
+import { FavoriteService } from './../../services/favorite.service';
 import { TaskService } from './../../services/task.service';
-import { Post } from './../../models/index';
+import { Post, Favorite } from './../../models/index';
 import { PostService } from './../../services/post.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -12,9 +13,12 @@ export class ListComponent implements OnInit {
   public posts;
   public tasks;
 
+  public currentUserId = localStorage.getItem('current_user_id');
+  public favoStatus: boolean;
+
   constructor(
     private postService: PostService,
-    private taskService: TaskService
+    private favoriteService: FavoriteService
   ) {}
 
   ngOnInit(): void {
@@ -22,7 +26,42 @@ export class ListComponent implements OnInit {
       this.postService.getPosts().subscribe((posts) => {
         this.posts = posts;
         console.log(this.posts);
+        posts.forEach((post) => {
+          post['favo_status'] = this.isFavo(post.favorites);
+        })
       });
     }, 1000);
+  }
+
+  ngDoCheck(): void {
+    
+  }
+
+  addFavo(post){
+    this.favoriteService.addFavo(post.id).subscribe(
+      (res) => {
+        post['favo_status'] = !post['favo_status'];
+        console.log(`add=favo_status:${post.favo_status}`);
+      }
+    );
+  }
+
+  deleteFavo(post){
+    this.favoriteService.deleteFavo(post.id).subscribe(
+      (res) => {
+        post['favo_status'] = !post['favo_status'];
+        console.log(`delete=favo_status:${post.favo_status}`);
+      }
+    );
+  }
+
+  isFavo(post_favorites): boolean{
+    let result: boolean = false;
+    post_favorites.forEach(value => {
+      if(value['user_id'] == this.currentUserId){
+        result = true;
+      }
+    });
+    return result;
   }
 }
