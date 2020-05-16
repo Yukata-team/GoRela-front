@@ -2,31 +2,38 @@
   <app-search></app-search>
   <div class="list-Container_Items">
     <ng-container *ngFor="let post of posts">
-      <div [routerLink]="['/detail', post.id]" class="list-Container_Item card">
-        <div class="list-Container_Title">
-          <h1>{{ post.title }}</h1>
-        </div>
-        <div class="list-Container_Limit">
-          <p>
-            期限&nbsp;:
-            <ng-container *ngIf="post.limit">
-              <span>{{ post.limit | date: "yyyy/MM/dd" }}</span>
+      <div class="list-Container_Item card">
+        <div [routerLink]="['/detail', post.id]" class="list-Container_Inner">
+          <div class="list-Container_Title">
+            <h1>{{ post.title }}</h1>
+          </div>
+          <div class="list-Container_Limit">
+            <p>
+              期限&nbsp;:
+              <ng-container *ngIf="post.limit">
+                <span>{{ post.limit | date: "yyyy/MM/dd" }}</span>
+              </ng-container>
+              <ng-container *ngIf="!post.limit">
+                <span>-</span>
+              </ng-container>
+            </p>
+          </div>
+          <div class="list-Container_Tasks">
+            <ng-container *ngFor="let task of post.tasks">
+              <div class="list-Container_Task">
+                <p>{{ task.content }}</p>
+              </div>
             </ng-container>
-            <ng-container *ngIf="!post.limit">
-              <span>-</span>
-            </ng-container>
-          </p>
-        </div>
-        <div class="list-Container_Tasks">
-          <ng-container *ngFor="let task of post.tasks">
-            <div class="list-Container_Task">
-              <p>{{ task.content }}</p>
-            </div>
-          </ng-container>
+          </div>
         </div>
         <div class="list-Container_ItemBottom">
           <div class="list-Container_Favorite">
-            <p>いいね</p>
+            <ng-container *ngIf="post.favo_status;else noFavo">
+              <p (click)="deleteFavo(post)" class="favorite">いいね</p>
+            </ng-container>
+            <ng-template #noFavo>
+              <p (click)="addFavo(post)">いいね</p>
+            </ng-template>
           </div>
           <div class="list-Container_Comment">
             <p class="far fa-comment-dots"></p>
@@ -39,6 +46,10 @@
           </div>
         </div>
       </div>
+      <pre>
+        {{post | json}}
+      </pre>
     </ng-container>
   </div>
 </div>
+

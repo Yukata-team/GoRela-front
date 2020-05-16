@@ -13,6 +13,8 @@
     }
   }
 
+  &_Inner{}
+
   &_Title {
     height: 3em;
     padding: 0 10px;
@@ -70,6 +72,14 @@
 
   &_Favorite {
     margin-right: 20px;
+    // pointer-events: none;
+
+    p{
+      &:hover{
+        opacity: 0.5;
+        cursor: pointer;
+      }
+    }
   }
 
   &_Comment {
@@ -81,5 +91,9 @@
   &_Account {
     margin-left: auto;
     margin-right: 20px;
+  }
+
+  .favorite{
+    color: $base-color;
   }
 }

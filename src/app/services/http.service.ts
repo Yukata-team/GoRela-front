@@ -40,6 +40,25 @@ export class HttpService {
     }
   }
 
+  //削除
+  delete<T>(url: string, id?: string):Observable<any>{
+    if (id) {
+      return this.http.delete<T>(`${this.apiUrl}/${url}/${id}`, this.httpOptions);
+    } else {
+      return this.http.delete<T>(`${this.apiUrl}/${url}`, this.httpOptions);
+    }
+  }
+
+  //更新
+  put<T>(url: string, id?: string):Observable<any>{
+    if (id) {
+      return this.http.put<T>(`${this.apiUrl}/${url}/${id}`, this.httpOptions);
+    } else {
+      return this.http.put<T>(`${this.apiUrl}/${url}`, this.httpOptions);
+    }
+  }
+
+  //Tokenの更新
   updateToken(access_token: string){
     this.httpOptions.headers = this.httpOptions.headers.set('Authorization', 'Bearer ' + access_token);
   }
