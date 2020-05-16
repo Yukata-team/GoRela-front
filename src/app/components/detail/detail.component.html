@@ -18,7 +18,7 @@
       </p>
     </div>
     <div class="detail-Container_Tasks">
-      <ng-container *ngFor="let task of tasks">
+      <ng-container *ngFor="let task of post.tasks">
         <div class="detail-Container_Task">
           <p>{{ task.content }}</p>
         </div>
@@ -39,5 +39,5 @@
       </div>
     </div>
   </div>
-  <app-comments [post_id]="post.id"></app-comments>
+  <app-comments [post]="post"></app-comments>
 </div>

@@ -18,17 +18,10 @@ export class ListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.postService.getPosts().subscribe((posts) => {
-      this.posts = posts;
-    });
-
-    this.taskService.getTasks().subscribe((tasks) => {
-      this.tasks = tasks;
-    });
-
     setTimeout(() => {
-      this.posts.forEach((value) => {
-        value['tasks'] = this.tasks.filter((task) => task.post_id === value.id);
+      this.postService.getPosts().subscribe((posts) => {
+        this.posts = posts;
+        console.log(this.posts);
       });
     }, 1000);
   }

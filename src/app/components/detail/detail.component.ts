@@ -27,9 +27,10 @@ export class DetailComponent implements OnInit {
 
     this.postService.getPost(this.id).subscribe((post) => {
       this.post = post;
-      this.taskService.getTasks().subscribe((tasks) => {
-        this.tasks = tasks.filter((value) => value['post_id'] === post.id);
-      });
+      // this.taskService.getTasks().subscribe((tasks) => {
+      //   this.tasks = tasks.filter((value) => value['post_id'] === post.id);
+      // });
+      console.log(post);
     });
   }
 }

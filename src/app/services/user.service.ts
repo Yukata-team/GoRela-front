@@ -14,9 +14,8 @@ export class UserService {
 
   constructor(private http: HttpService, private error: ErrorService) {}
 
-  addUser(user: User): Observable<User> {
-    user.is_login = true;
-    return this.http.post(this.url, user).pipe(
+  addUser(user: User): Observable<any> {
+    return this.http.post('signup', user).pipe(
       tap(() => this.log('add user!!!!!')),
       catchError(this.error.handleError<any>('cannot addUser'))
     );
@@ -29,23 +28,11 @@ export class UserService {
     );
   }
 
-  login(id: string) {
-    this.http.post(this.url, { is_login: true }, id);
+  login(user: User) {
+    return this.http.post('login', user);
   }
 
   log(message: string) {
     console.log(message);
-  }
-
-  isExist(users: User[], newEmail: string, newPassword?: string): boolean {
-    if (newPassword) {
-      return users.some(
-        (user) => user.email === newEmail && user.password === newPassword
-      );
-    } else if (!users) {
-      console.log('no users!!');
-    } else {
-      return users.some((user) => user.email === newEmail);
-    }
   }
 }

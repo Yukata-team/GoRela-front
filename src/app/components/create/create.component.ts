@@ -12,7 +12,7 @@ import { FormControl, Validators, FormBuilder } from '@angular/forms';
 })
 export class CreateComponent implements OnInit {
   private newPost;
-  private newTask;
+  private newTask = [];
 
   postTitle;
   postLimit;
@@ -32,29 +32,35 @@ export class CreateComponent implements OnInit {
   create() {
     console.log('create');
     console.log(this.tasks);
+    let _tasks = this.deleteEmpty(this.tasks);
+    _tasks.forEach((value) => {
+      this.newTask.push({content: value});
+    });
     this.newPost = {
       title: this.postTitle,
-      limit: this.postLimit,
       detail: this.postDetail,
+      limit: this.postLimit,
+      tasks: this.newTask
     };
     console.log(this.newPost);
     console.log(!!this.tasks);
-    let _tasks = this.deleteEmpty(this.tasks);
     console.log(_tasks.length !== 0);
     if (!this.postTitle.invalid && _tasks.length !== 0) {
       this.postService.addPost(this.newPost).subscribe((post) => {
-        _tasks.forEach((value) => {
-          console.log(value);
-          this.newTask = {
-            content: value,
-            post_id: post.id,
-          };
-          this.taskService.addTask(this.newTask).subscribe((task) => {
-            if (task) {
-              this.router.navigate(['list']);
-            }
-          });
-        });
+        // _tasks.forEach((value) => {
+        //   console.log(value);
+        //   this.newTask = {
+        //     content: value,
+        //     post_id: post.id,
+        //   };
+        //   this.taskService.addTask(this.newTask).subscribe((task) => {
+        //     if (task) {
+        //       this.router.navigate(['list']);
+        //     }
+        //   });
+        // });
+        console.log(post);
+        this.router.navigate(['list']);
       });
     }
   }
