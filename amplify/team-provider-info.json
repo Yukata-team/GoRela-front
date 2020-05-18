@@ -1,0 +1,23 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-gorela-dev-30608-authRole",
+            "UnauthRoleArn": "arn:aws:iam::545687778879:role/amplify-gorela-dev-30608-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::545687778879:role/amplify-gorela-dev-30608-authRole",
+            "Region": "ap-northeast-1",
+            "DeploymentBucketName": "amplify-gorela-dev-30608-deployment",
+            "UnauthRoleName": "amplify-gorela-dev-30608-unauthRole",
+            "StackName": "amplify-gorela-dev-30608",
+            "StackId": "arn:aws:cloudformation:ap-northeast-1:545687778879:stack/amplify-gorela-dev-30608/4aa519d0-9932-11ea-8571-0e2825cd3a94",
+            "AmplifyAppId": "d3jqiqxlhu3veq"
+        },
+        "categories": {
+            "hosting": {
+                "amplifyhosting": {
+                    "appId": "d3jqiqxlhu3veq",
+                    "type": "cicd"
+                }
+            }
+        }
+    }
+}
