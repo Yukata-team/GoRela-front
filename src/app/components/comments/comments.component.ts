@@ -24,6 +24,7 @@ export class CommentsComponent implements OnInit {
     //   );
     // });
     this.comments = this.post.comments;
+    console.log(typeof(this.comments));
   }
 
   create() {
@@ -32,7 +33,7 @@ export class CommentsComponent implements OnInit {
     };
     console.log(this.newComment);
     this.commentService.addComment(this.newComment, this.post.id).subscribe((comment) => {
-      // this.comments.push(comment);
+      this.comments.unshift(comment);
       this.commentContent = '';
     });
   }

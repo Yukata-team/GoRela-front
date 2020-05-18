@@ -9,7 +9,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class TaskService {
-  private url = 'task';
+  private url = 'tasks';
 
   constructor(private http: HttpService, private error: ErrorService) {}
 
@@ -24,6 +24,13 @@ export class TaskService {
     return this.http.post(this.url, task).pipe(
       tap(() => console.log('addTask')),
       catchError(this.error.handleError('cannot addTask'))
+    );
+  }
+
+  updateTask(task: Task){
+    return this.http.put(this.url, task.id, String(task.id)).pipe(
+      tap(() => console.log('updateTask')),
+      catchError(this.error.handleError('cannot updateTask'))
     );
   }
 }
