@@ -44,10 +44,10 @@ export interface Favorite {
 
 export interface Comment {
   content: string;
-  user: User;
+  user_id: number;
   post_id: number;
-  created_at: Date;
-  updated_at: Date;
+  created_at?: Date;
+  updated_at?: Date;
 }
 
 export interface Reply {

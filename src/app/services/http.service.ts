@@ -50,11 +50,11 @@ export class HttpService {
   }
 
   //更新
-  put<T>(url: string, id?: string):Observable<any>{
+  put<T>(url: string, body: any, id?: string):Observable<any>{
     if (id) {
-      return this.http.put<T>(`${this.apiUrl}/${url}/${id}`, this.httpOptions);
+      return this.http.put<T>(`${this.apiUrl}/${url}/${id}`, body, this.httpOptions);
     } else {
-      return this.http.put<T>(`${this.apiUrl}/${url}`, this.httpOptions);
+      return this.http.put<T>(`${this.apiUrl}/${url}`, body, this.httpOptions);
     }
   }
 

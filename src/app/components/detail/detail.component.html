@@ -20,16 +20,27 @@
     <div class="detail-Container_Tasks">
       <ng-container *ngFor="let task of post.tasks">
         <div class="detail-Container_Task">
-          <p>{{ task.content }}</p>
+          <ng-container *ngIf="task.is_done;else isntDone">
+            <p class="checked" (click)="uncheck(task)">{{ task.content }}</p>
+          </ng-container>
+          <ng-template #isntDone>
+            <p class="not-checked" (click)="check(task)">{{ task.content }}</p>
+          </ng-template>
         </div>
       </ng-container>
     </div>
     <div class="detail-Container_ItemBottom">
       <div class="detail-Container_Favorite">
-        <p>いいね</p>
+        <ng-container *ngIf="post.favo_status;else noFavo">
+          <p (click)="deleteFavo(post)" class="favorite">いいね&nbsp;{{post.favorites.length}}</p>
+        </ng-container>
+        <ng-template #noFavo>
+          <p (click)="addFavo(post)">いいね&nbsp;{{post.favorites.length}}</p>
+        </ng-template>
       </div>
       <div class="detail-Container_Comment">
         <p class="far fa-comment-dots"></p>
+        <span>&nbsp;{{post.comments.length}}</span>
       </div>
       <div class="detail-Container_Account">
         <p>あ</p>
@@ -41,3 +52,6 @@
   </div>
   <app-comments [post]="post"></app-comments>
 </div>
+<pre>
+  {{post|json}}
+</pre>

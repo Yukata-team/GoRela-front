@@ -72,7 +72,6 @@
 
   &_Favorite {
     margin-right: 20px;
-    // pointer-events: none;
 
     p{
       &:hover{
@@ -83,8 +82,15 @@
   }
 
   &_Comment {
+    display: flex;
+    align-items: center;
+
     p {
       font-size: 15px;
+    }
+    span{
+      font-size: 10px;
+      color: $sub-color;
     }
   }
 

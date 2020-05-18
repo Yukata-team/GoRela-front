@@ -1,5 +1,6 @@
+import { FavoriteService } from './../../services/favorite.service';
 import { TaskService } from './../../services/task.service';
-import { Post, Task } from './../../models/index';
+import { Post, Task, Favorite } from './../../models/index';
 import { PostService } from './../../services/post.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
@@ -11,13 +12,17 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class DetailComponent implements OnInit {
   private id: string;
-  public post: Post;
+  public post: any;
   public tasks: Task[];
+  public favoStatus: boolean;
+
+  public currentUserId = localStorage.getItem('current_user_id');
 
   constructor(
     private route: ActivatedRoute,
     private postService: PostService,
-    private taskService: TaskService
+    private taskService: TaskService,
+    private favoriteService: FavoriteService
   ) {}
 
   ngOnInit(): void {
@@ -27,10 +32,47 @@ export class DetailComponent implements OnInit {
 
     this.postService.getPost(this.id).subscribe((post) => {
       this.post = post;
-      // this.taskService.getTasks().subscribe((tasks) => {
-      //   this.tasks = tasks.filter((value) => value['post_id'] === post.id);
-      // });
       console.log(post);
+      post['favo_status'] = this.isFavo(post.favorites);
     });
   }
+
+  check(task: Task){
+    task.is_done = true;
+    this.taskService.updateTask(task).subscribe();
+  }
+
+  uncheck(task: Task){
+    task.is_done = false;
+    this.taskService.updateTask(task).subscribe();
+  }
+
+  addFavo(post){
+    this.favoriteService.addFavo(post.id).subscribe(
+      (res) => {
+        post['favo_status'] = !post['favo_status'];
+        console.log(`add=favo_status:${post.favo_status}`);
+      }
+    );
+  }
+
+  deleteFavo(post){
+    this.favoriteService.deleteFavo(post.id).subscribe(
+      (res) => {
+        post['favo_status'] = !post['favo_status'];
+        console.log(`delete=favo_status:${post.favo_status}`);
+      }
+    );
+  }
+
+  isFavo(post_favorites): boolean{
+    let result: boolean = false;
+    post_favorites.forEach(value => {
+      if(value['user_id'] == this.currentUserId){
+        result = true;
+      }
+    });
+    return result;
+  }
+
 }

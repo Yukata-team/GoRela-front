@@ -33,4 +33,11 @@ export class PostService {
       catchError(this.error.handleError('cannot addPost'))
     );
   }
+
+  updatePost(post: Post){
+    return this.http.put(this.url, post, String(post.id)).pipe(
+      tap(() => console.log('updatePost')),
+      catchError(this.error.handleError('cannot updatePost'))
+    );
+  }
 }
