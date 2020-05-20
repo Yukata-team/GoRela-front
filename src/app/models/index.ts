@@ -1,11 +1,10 @@
 export interface User {
-  id: number;
+  id?: number;
   name?: string;
   email: string;
   password: string;
   introduction?: string;
   image?: string;
-  is_login: boolean;
   created_at?: Date;
   updated_at?: Date;
 }
@@ -17,35 +16,38 @@ export interface Relation {
 
 export interface Post {
   id: number;
-  title: string;
-  limit: Date;
   user: User;
+  title: string;
+  detail: string;
+  limit: Date;
+  tasks: Task[];
+  comments: Comment[];
+  favorites: Favorite[];
   created_at: Date;
   updated_at: Date;
 }
 
 export interface Task {
   id: number;
+  post_id: number;
   content: string;
   is_done: boolean;
-  post_id: number;
-  created_at: Date;
-  updated_at: Date;
 }
 
 export interface Favorite {
-  post: Post;
-  user: User;
-  created_at: Date;
-  updated_at: Date;
+  id: number;
+  post_id: number;
+  user_id: number;
+  created_at?: Date;
+  updated_at?: Date;
 }
 
 export interface Comment {
   content: string;
-  user: User;
-  post: Post;
-  created_at: Date;
-  updated_at: Date;
+  user_id: number;
+  post_id: number;
+  created_at?: Date;
+  updated_at?: Date;
 }
 
 export interface Reply {

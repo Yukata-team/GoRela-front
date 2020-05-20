@@ -1,13 +1,19 @@
 @import "../../../style/variable";
 .list-Container {
   margin: 0 50px;
-
-  &_Items {
-  }
+  max-width: $post-max-width;
 
   &_Item {
     margin-bottom: 50px;
+    cursor: pointer;
+    transition: 0.3s;
+
+    &:hover {
+      box-shadow: 0 0 15px $shadow-color;
+    }
   }
+
+  &_Inner{}
 
   &_Title {
     height: 3em;
@@ -66,16 +72,34 @@
 
   &_Favorite {
     margin-right: 20px;
+
+    p{
+      &:hover{
+        opacity: 0.5;
+        cursor: pointer;
+      }
+    }
   }
 
   &_Comment {
+    display: flex;
+    align-items: center;
+
     p {
       font-size: 15px;
+    }
+    span{
+      font-size: 10px;
+      color: $sub-color;
     }
   }
 
   &_Account {
     margin-left: auto;
     margin-right: 20px;
+  }
+
+  .favorite{
+    color: $base-color;
   }
 }

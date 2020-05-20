@@ -1,3 +1,4 @@
+import { HttpService } from './../../services/http.service';
 import { Router } from '@angular/router';
 import { UserService } from './../../services/user.service';
 import { User } from './../../models/index';
@@ -17,13 +18,6 @@ import { CustomValidators } from 'ng2-validation';
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit {
-  user: User;
-  // registerForm = this.fb.group({
-  //   email: ['', Validators.required, Validators.email],
-  //   password: ['', Validators.required],
-  //   passwordconfirm: ['', Validators.required],
-  // });
-
   email = new FormControl('', [Validators.required, Validators.email]);
   password = new FormControl('', [Validators.required]);
   password_confirm = new FormControl('', [
@@ -37,48 +31,23 @@ export class RegisterComponent implements OnInit {
     password_confirm: this.password_confirm,
   });
 
-  users: User[];
-
   constructor(
     private fb: FormBuilder,
     private userService: UserService,
-    private router: Router
+    private router: Router,
+    private http: HttpService
   ) {}
 
-  ngOnInit(): void {
-    this.userService.getUsers().subscribe((users: User[]) => {
-      this.users = users;
-    });
-  }
-
-  log() {
-    console.log(this.registerForm.value.email);
-    console.log(this.registerForm.value.password);
-    console.log(this.registerForm.value.passwordconfirm);
-  }
+  ngOnInit(): void {}
 
   add() {
-    let _isExist = this.userService.isExist(
-      this.users,
-      this.registerForm.value.email
-    );
-
-    console.log(this.registerForm.value);
-    if (!this.registerForm.invalid && !_isExist) {
-      this.userService.addUser(this.registerForm.value).subscribe((user) => {
-        this.user = user;
-        console.log('add!!!!!');
-        console.log(this.user);
-        this.log();
+    if (!this.registerForm.invalid) {
+      this.userService.addUser(this.registerForm.value).subscribe((res) => {
+        console.log(res);
+        localStorage.setItem('access_token', res.token);
+        this.http.updateToken(localStorage.getItem('access_token'));
+        this.router.navigate(['list']);
       });
-
-      this.router.navigate(['list']);
-    } else {
-      console.log('no!!!!');
     }
   }
-
-  // isExist(newEmail: string, password?: string): boolean {
-  //   return this.users.some((user) => user.email === newEmail);
-  // }
 }

@@ -9,7 +9,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class PostService {
-  private url = 'post';
+  private url = 'posts';
 
   constructor(private http: HttpService, private error: ErrorService) {}
 
@@ -20,7 +20,7 @@ export class PostService {
     );
   }
 
-  getPost(id: number): Observable<Post> {
+  getPost(id: string): Observable<Post> {
     return this.http.get(this.url, id).pipe(
       tap(() => console.log('getPost')),
       catchError(this.error.handleError<any>('cannot getPost'))
@@ -31,6 +31,13 @@ export class PostService {
     return this.http.post(this.url, post).pipe(
       tap(() => console.log('addPost')),
       catchError(this.error.handleError('cannot addPost'))
+    );
+  }
+
+  updatePost(post: Post){
+    return this.http.put(this.url, post, String(post.id)).pipe(
+      tap(() => console.log('updatePost')),
+      catchError(this.error.handleError('cannot updatePost'))
     );
   }
 }

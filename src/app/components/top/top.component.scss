@@ -24,7 +24,7 @@
     }
 
     &:hover {
-      box-shadow: 0 0 15px #00000044;
+      box-shadow: 0 0 15px $shadow-color;
     }
   }
 
@@ -37,7 +37,7 @@
       font-size: 20px;
       font-weight: bold;
       &:hover {
-        box-shadow: 0 0 15px #00000044;
+        box-shadow: 0 0 15px $shadow-color;
       }
     }
   }
