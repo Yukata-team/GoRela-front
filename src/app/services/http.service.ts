@@ -6,7 +6,8 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class HttpService {
-  private apiUrl = 'http://localhost:1323';
+  // private apiUrl = 'http://localhost:1323';
+  private apiUrl = '54.225.116.229';
   private accessToken = localStorage.getItem('access_token');
   private httpOptions = {
     headers: new HttpHeaders({
