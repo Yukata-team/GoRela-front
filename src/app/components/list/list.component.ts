@@ -28,14 +28,10 @@ export class ListComponent implements OnInit {
         console.log(this.posts);
         posts.forEach((post) => {
           post['favo_status'] = this.isFavo(post.favorites);
-          post['favorite_length'] = post.favorites.length;
+          post['favorites_length'] = post.favorites.length;
         })
       });
     }, 1000);
-  }
-
-  ngDoCheck(): void {
-    
   }
 
   addFavo(post){
@@ -43,8 +39,8 @@ export class ListComponent implements OnInit {
     this.favoriteService.addFavo(post.id).subscribe(
       (res) => {
         post['favo_status'] = !post['favo_status'];
-        post['favorite_length']++;
-        console.log(post['favorite_length'])
+        post['favorites_length']++;
+        console.log(post['favorites_length'])
         console.log(`add=favo_status:${post.favo_status}`);
       }
     );
@@ -54,8 +50,8 @@ export class ListComponent implements OnInit {
     this.favoriteService.deleteFavo(post.id).subscribe(
       (res) => {
         post['favo_status'] = !post['favo_status'];
-        post['favorite_length']--;
-        console.log(post['favorite_length'])
+        post['favorites_length']--;
+        console.log(post['favorites_length'])
         console.log(`delete=favo_status:${post.favo_status}`);
       }
     );
