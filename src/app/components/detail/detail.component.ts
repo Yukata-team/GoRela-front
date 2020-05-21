@@ -34,6 +34,7 @@ export class DetailComponent implements OnInit {
       this.post = post;
       console.log(post);
       post['favo_status'] = this.isFavo(post.favorites);
+      post['favorites_length'] = post.favorites.length;
     });
   }
 
@@ -52,6 +53,7 @@ export class DetailComponent implements OnInit {
     this.favoriteService.addFavo(post.id).subscribe(
       (res) => {
         post['favo_status'] = !post['favo_status'];
+        post['favorites_length']++;
         console.log(`add=favo_status:${post.favo_status}`);
       }
     );
@@ -61,6 +63,7 @@ export class DetailComponent implements OnInit {
     this.favoriteService.deleteFavo(post.id).subscribe(
       (res) => {
         post['favo_status'] = !post['favo_status'];
+        post['favorites_length']--;
         console.log(`delete=favo_status:${post.favo_status}`);
       }
     );

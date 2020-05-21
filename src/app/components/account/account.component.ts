@@ -27,6 +27,11 @@ export class AccountComponent implements OnInit {
     this.userService.getUser(this.user_id).subscribe(
       (res) => {
       this.user = res;
+      this.user.posts.forEach((post) => {
+        post['favo_status'] = this.isFavo(post.favorites);
+        post['favorites_length'] = post.favorites.length;
+        console.log(post['favorites_length']);
+      })
     });
   }
 
@@ -35,6 +40,7 @@ export class AccountComponent implements OnInit {
     this.favoriteService.addFavo(post.id).subscribe(
       (res) => {
         post['favo_status'] = !post['favo_status'];
+        post['favorites_length']++;
         console.log(`add=favo_status:${post.favo_status}`);
       }
     );
@@ -44,6 +50,7 @@ export class AccountComponent implements OnInit {
     this.favoriteService.deleteFavo(post.id).subscribe(
       (res) => {
         post['favo_status'] = !post['favo_status'];
+        post['favorites_length']--;
         console.log(`delete=favo_status:${post.favo_status}`);
       }
     );
