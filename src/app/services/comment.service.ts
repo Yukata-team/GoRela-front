@@ -21,6 +21,7 @@ export class CommentService {
   }
 
   addComment(comment: string, post_id: number): Observable<any> {
+    console.log("comment service");
     return this.http.post(`posts/${post_id}/${this.url}`, comment).pipe(
       tap(() => console.log('addComment')),
       catchError(this.error.handleError('cannot addComment'))

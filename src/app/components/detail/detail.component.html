@@ -43,7 +43,7 @@
         <span>&nbsp;{{post.comments.length}}</span>
       </div>
       <div class="detail-Container_Account">
-        <p>あ</p>
+        <p>{{post.User.name}}</p>
       </div>
       <div class="detail-Container_Date">
         <p>{{ post.created_at | date: "yyyy/MM/dd hh:mm" }}</p>
@@ -52,6 +52,3 @@
   </div>
   <app-comments [post]="post"></app-comments>
 </div>
-<pre>
-  {{post|json}}
-</pre>

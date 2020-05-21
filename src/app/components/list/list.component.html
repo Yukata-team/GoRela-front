@@ -32,25 +32,21 @@
               <p (click)="deleteFavo(post)" class="favorite">いいね&nbsp;{{post.favorites.length}}</p>
             </ng-container>
             <ng-template #noFavo>
-              <p (click)="addFavo(post)">いいね&nbsp;{{post.favorites.length}}</p>
+              <p (click)="addFavo(post)">いいね&nbsp;{{post.favorites_length}}</p>
             </ng-template>
           </div>
           <div class="list-Container_Comment">
             <p class="far fa-comment-dots"></p>
-            <span>&nbsp;{{post.comments.length}}</span>
+            <span>&nbsp;{{post.comments_length}}</span>
           </div>
           <div class="list-Container_Account">
-            <p>あ</p>
+            <p>{{post.User.name}}</p>
           </div>
           <div class="list-Container_Date">
             <p>{{ post.created_at | date: "yyyy/MM/dd hh:mm" }}</p>
           </div>
         </div>
       </div>
-      <pre>
-        
-        {{post | json}}
-      </pre>
     </ng-container>
   </div>
 </div>

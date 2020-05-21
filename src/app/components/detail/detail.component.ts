@@ -16,7 +16,7 @@ export class DetailComponent implements OnInit {
   public tasks: Task[];
   public favoStatus: boolean;
 
-  public currentUserId = localStorage.getItem('current_user_id');
+  public currentUserId = sessionStorage.getItem('current_user_id');
 
   constructor(
     private route: ActivatedRoute,
@@ -48,6 +48,7 @@ export class DetailComponent implements OnInit {
   }
 
   addFavo(post){
+    console.log("addFavo!!");
     this.favoriteService.addFavo(post.id).subscribe(
       (res) => {
         post['favo_status'] = !post['favo_status'];

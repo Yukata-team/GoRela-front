@@ -9,6 +9,7 @@ export class FavoriteService {
   constructor(private http:HttpService) { }
 
   addFavo(post_id: number){
+    console.log("add favoservice");
     return this.http.post(`posts/${post_id}/favorite`, {post_id: post_id});
   }
 

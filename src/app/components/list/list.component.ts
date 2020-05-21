@@ -13,7 +13,7 @@ export class ListComponent implements OnInit {
   public posts;
   public tasks;
 
-  public currentUserId = localStorage.getItem('current_user_id');
+  public currentUserId = sessionStorage.getItem('current_user_id');
   public favoStatus: boolean;
 
   constructor(
@@ -28,6 +28,7 @@ export class ListComponent implements OnInit {
         console.log(this.posts);
         posts.forEach((post) => {
           post['favo_status'] = this.isFavo(post.favorites);
+          post['favorite_length'] = post.favorites.length;
         })
       });
     }, 1000);
@@ -38,9 +39,12 @@ export class ListComponent implements OnInit {
   }
 
   addFavo(post){
+    console.log("addFavo!");
     this.favoriteService.addFavo(post.id).subscribe(
       (res) => {
         post['favo_status'] = !post['favo_status'];
+        post['favorite_length']++;
+        console.log(post['favorite_length'])
         console.log(`add=favo_status:${post.favo_status}`);
       }
     );
@@ -50,6 +54,8 @@ export class ListComponent implements OnInit {
     this.favoriteService.deleteFavo(post.id).subscribe(
       (res) => {
         post['favo_status'] = !post['favo_status'];
+        post['favorite_length']--;
+        console.log(post['favorite_length'])
         console.log(`delete=favo_status:${post.favo_status}`);
       }
     );

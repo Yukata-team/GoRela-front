@@ -10,7 +10,7 @@ import { catchError, map, tap, retry } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class UserService {
-  private url = 'user';
+  private url = 'users';
 
   constructor(private http: HttpService, private error: ErrorService) {}
 
@@ -25,6 +25,13 @@ export class UserService {
     return this.http.get(this.url).pipe(
       tap(() => this.log('get users!!!!!')),
       catchError(this.error.handleError<any>('cannot getUsers'))
+    );
+  }
+
+  getUser(user_id: string): Observable<User> {
+    return this.http.get(this.url , user_id).pipe(
+      tap(() => this.log('get user!!!!!')),
+      catchError(this.error.handleError<any>('cannot getUser'))
     );
   }
 
