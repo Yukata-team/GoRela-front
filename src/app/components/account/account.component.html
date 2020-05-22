@@ -46,10 +46,10 @@
             <ng-container *ngFor="let task of post.tasks">
               <div class="account-Container_Task">
                 <ng-container *ngIf="task.is_done;else isntDone">
-                  <p class="checked" (click)="uncheck(task)">{{ task.content }}</p>
+                  <p class="checked">{{ task.content }}</p>
                 </ng-container>
                 <ng-template #isntDone>
-                  <p class="not-checked" (click)="check(task)">{{ task.content }}</p>
+                  <p class="not-checked">{{ task.content }}</p>
                 </ng-template>
               </div>
             </ng-container>
@@ -64,15 +64,17 @@
               <p (click)="addFavo(post)">いいね&nbsp;{{post.favorites_length}}</p>
             </ng-template>
           </div>
-          <div class="account-Container_Comment">
-            <p class="far fa-comment-dots"></p>
-            <span>&nbsp;{{post.comments.length}}</span>
-          </div>
-          <div class="account-Container_Account">
-            <p>{{post.User.name}}</p>
-          </div>
-          <div class="account-Container_Date">
-            <p>{{ post.created_at | date: "yyyy/MM/dd hh:mm" }}</p>
+          <div class="account-Container_ItemBottomRight" [routerLink]="['/detail', post.id]">
+            <div class="account-Container_Comment">
+              <p class="far fa-comment-dots"></p>
+              <span>&nbsp;{{post.comments.length}}</span>
+            </div>
+            <div class="account-Container_Account">
+              <p>{{post.User.name}}</p>
+            </div>
+            <div class="account-Container_Date">
+              <p>{{ post.created_at | date: "yyyy/MM/dd hh:mm" }}</p>
+            </div>
           </div>
         </div>    
       </div>

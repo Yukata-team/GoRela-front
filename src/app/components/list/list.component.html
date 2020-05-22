@@ -40,15 +40,17 @@
               <p (click)="addFavo(post)">いいね&nbsp;{{post.favorites_length}}</p>
             </ng-template>
           </div>
-          <div class="list-Container_Comment">
-            <p class="far fa-comment-dots"></p>
-            <span>&nbsp;{{post.comments.length}}</span>
-          </div>
-          <div class="list-Container_Account">
-            <p>{{post.User.name}}</p>
-          </div>
-          <div class="list-Container_Date">
-            <p>{{ post.created_at | date: "yyyy/MM/dd hh:mm" }}</p>
+          <div class="list-Container_ItemBottomRight" [routerLink]="['/detail', post.id]">
+            <div class="list-Container_Comment">
+              <p class="far fa-comment-dots"></p>
+              <span>&nbsp;{{post.comments.length}}</span>
+            </div>
+            <div class="list-Container_Account">
+              <p>{{post.User.name}}</p>
+            </div>
+            <div class="list-Container_Date">
+              <p>{{ post.created_at | date: "yyyy/MM/dd hh:mm" }}</p>
+            </div>
           </div>
         </div>
       </div>

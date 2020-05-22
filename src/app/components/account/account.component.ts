@@ -65,16 +65,4 @@ export class AccountComponent implements OnInit {
     });
     return result;
   }
-
-  check(task: Task){
-    task.is_done = true;
-    this.taskService.updateTask(task).subscribe();
-  }
-
-  uncheck(task: Task){
-    task.is_done = false;
-    this.taskService.updateTask(task).subscribe();
-  }
-
-
 }
