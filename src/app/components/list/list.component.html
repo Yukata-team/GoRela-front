@@ -44,12 +44,12 @@
               <p class="far fa-comment-dots"></p>
               <span>&nbsp;{{post.comments.length}}</span>
             </div>
-            <div class="list-Container_Account">
-              <p>{{post.User.name}}</p>
-            </div>
-            <div class="list-Container_Date">
-              <p>{{ post.created_at | date: "yyyy/MM/dd hh:mm" }}</p>
-            </div>
+          </div>
+          <div [routerLink]="['/account', post.User.id]" class="list-Container_Account">
+            <p>{{post.User.name}}</p>
+          </div>
+          <div [routerLink]="['/detail', post.id]" class="list-Container_Date">
+            <p>{{ post.created_at | date: "yyyy/MM/dd hh:mm" }}</p>
           </div>
         </div>
       </div>

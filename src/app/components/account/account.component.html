@@ -14,6 +14,34 @@
           <p>投稿</p>
         </div>
       </div>
+      <div class="account-Container_FollowCount">
+        <div class="account-Container_FollowNumber">
+          <p>{{follows_length}}</p>
+        </div>
+        <div class="account-Container_FollowText">
+          <p>フォロー</p>
+        </div>
+      </div>
+      <div class="account-Container_FollowerCount">
+        <div class="account-Container_FollowerNumber">
+          <p>{{followers_length}}</p>
+        </div>
+        <div class="account-Container_FollowerText">
+          <p>フォロワー</p>
+        </div>
+      </div>
+      <ng-container *ngIf="!isSameUser()">
+        <ng-container *ngIf="follow_status;else followButton">
+          <div (click)="unfollow()" class="account-Container_FollowButton">
+            <p>フォローを解除</p>
+          </div>
+        </ng-container>
+        <ng-template #followButton>
+          <div (click)="follow()" class="account-Container_FollowButton">
+            <p>フォロー</p>
+          </div>
+        </ng-template>
+      </ng-container>
     </div>
     <div class="account-Container_BottomInfo">
       <div class="account-Container_UserDetail">
@@ -69,9 +97,6 @@
               <p class="far fa-comment-dots"></p>
               <span>&nbsp;{{post.comments.length}}</span>
             </div>
-            <div class="account-Container_Account">
-              <p>{{post.User.name}}</p>
-            </div>
             <div class="account-Container_Date">
               <p>{{ post.created_at | date: "yyyy/MM/dd hh:mm" }}</p>
             </div>
@@ -81,3 +106,6 @@
     </ng-container>
   </div>
 </div>
+<pre>
+  {{user|json}}
+</pre>

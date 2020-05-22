@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
     if (!this.loginForm.invalid) {
       this.userService.login(this.loginForm.value).subscribe((res) => {
         console.log(res);
-        sessionStorage.setItem('current_user_id', '1');
+        sessionStorage.setItem('current_user_id', res.user_id);
         localStorage.setItem('access_token', res.token);
         this.http.updateToken(localStorage.getItem('access_token'));
         this.router.navigate(['list']);
