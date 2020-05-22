@@ -44,6 +44,7 @@ export class RegisterComponent implements OnInit {
     if (!this.registerForm.invalid) {
       this.userService.addUser(this.registerForm.value).subscribe((res) => {
         console.log(res);
+        sessionStorage.setItem('current_user_id', res.user_id);
         localStorage.setItem('access_token', res.token);
         this.http.updateToken(localStorage.getItem('access_token'));
         this.router.navigate(['list']);

@@ -20,6 +20,23 @@
     }
   }
 
+  &_Delete{
+    margin-left: 20px;
+    cursor: pointer;
+    color: $sub-color;
+    transition: 0.3s;
+    
+    &::before{
+      content: "\f2ed";
+      font-family: "Font Awesome 5 Free";
+      font-weight: 900;
+    }
+
+    &:hover{
+      color: $base-color;
+    }
+  }
+
   &_Detail {
     margin: 0 20px;
     padding: 30px;
@@ -116,6 +133,13 @@
   &_Account {
     margin-left: auto;
     margin-right: 20px;
+
+    p{
+      &:hover{
+        opacity: 0.5;
+        cursor: pointer;
+      }
+    }
   }
 
   .favorite{

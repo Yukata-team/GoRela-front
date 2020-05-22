@@ -1,3 +1,4 @@
+import { ActivatedRoute } from '@angular/router';
 import { TaskService } from './../../services/task.service';
 import { FavoriteService } from './../../services/favorite.service';
 import { User, Task } from './../../models/index';
@@ -13,21 +14,46 @@ export class AccountComponent implements OnInit {
 
   public user;
   public posts;
-  private user_id: string;
   public currentUserId = sessionStorage.getItem('current_user_id');
+  public follows_length: number;
+  public followers_length: number;
+  public follow_status: boolean;
+
+  
+  private user_id: string;
+
 
   constructor(
     private userService: UserService,
     private favoriteService: FavoriteService,
     private taskService: TaskService,
+    private activatedRoute: ActivatedRoute,
   ) { }
 
   ngOnInit(): void {
-    this.user_id = sessionStorage.getItem('current_user_id');
+    this.activatedRoute.params.subscribe((params) => {
+      this.user_id = params['id'];
+      console.log(this.user_id);
+    });
+
+    if(!this.user_id){
+      this.user_id = this.currentUserId;
+      console.log(this.user_id);
+    }
+
     this.userService.getUser(this.user_id).subscribe(
       (res) => {
       this.user = res;
+      this.user.posts.forEach((post) => {
+        post['favo_status'] = this.isFavo(post.favorites);
+        post['favorites_length'] = post.favorites.length;
+        console.log(post['favorites_length']);
+      });
+      this.follows_length = this.user.follows.length;
+      this.followers_length = this.user.followers.length;
+      this.follow_status = this.isFollow();
     });
+
   }
 
   addFavo(post){
@@ -35,6 +61,7 @@ export class AccountComponent implements OnInit {
     this.favoriteService.addFavo(post.id).subscribe(
       (res) => {
         post['favo_status'] = !post['favo_status'];
+        post['favorites_length']++;
         console.log(`add=favo_status:${post.favo_status}`);
       }
     );
@@ -44,6 +71,7 @@ export class AccountComponent implements OnInit {
     this.favoriteService.deleteFavo(post.id).subscribe(
       (res) => {
         post['favo_status'] = !post['favo_status'];
+        post['favorites_length']--;
         console.log(`delete=favo_status:${post.favo_status}`);
       }
     );
@@ -59,15 +87,32 @@ export class AccountComponent implements OnInit {
     return result;
   }
 
-  check(task: Task){
-    task.is_done = true;
-    this.taskService.updateTask(task).subscribe();
+  follow(){
+    this.userService.followUser(this.user.id).subscribe((res) => {
+      this.followers_length++;
+      this.follow_status = !this.follow_status;
+    });
   }
 
-  uncheck(task: Task){
-    task.is_done = false;
-    this.taskService.updateTask(task).subscribe();
+  unfollow(){
+    this.userService.unfollowUser(this.user.id).subscribe((res) => {
+      this.followers_length--;
+      this.follow_status = !this.follow_status;
+    });
   }
 
+  isFollow(): boolean{
+    let result: boolean = false;
+    this.user.followers.forEach(value => {
+      console.log(value['follow_user_id']);
+      if(value['follow_user_id'] == this.currentUserId){
+        result = true;
+      }
+    });
+    return result;
+  }
 
+  isSameUser(): boolean{
+    return this.currentUserId == this.user_id;
+  }
 }

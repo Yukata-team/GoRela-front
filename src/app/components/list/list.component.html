@@ -1,5 +1,4 @@
 <div class="list-Container">
-  <app-search></app-search>
   <div class="list-Container_Items">
     <ng-container *ngFor="let post of posts">
       <div class="list-Container_Item card">
@@ -21,7 +20,12 @@
           <div class="list-Container_Tasks">
             <ng-container *ngFor="let task of post.tasks">
               <div class="list-Container_Task">
-                <p>{{ task.content }}</p>
+                <ng-container *ngIf="task.is_done;else isntDone">
+                  <p class="checked">{{ task.content }}</p>
+                </ng-container>
+                <ng-template #isntDone>
+                  <p class="not-checked">{{ task.content }}</p>
+                </ng-template>
               </div>
             </ng-container>
           </div>
@@ -29,20 +33,22 @@
         <div class="list-Container_ItemBottom">
           <div class="list-Container_Favorite">
             <ng-container *ngIf="post.favo_status;else noFavo">
-              <p (click)="deleteFavo(post)" class="favorite">いいね&nbsp;{{post.favorites.length}}</p>
+              <p (click)="deleteFavo(post)" class="favorite">いいね&nbsp;{{post.favorites_length}}</p>
             </ng-container>
             <ng-template #noFavo>
               <p (click)="addFavo(post)">いいね&nbsp;{{post.favorites_length}}</p>
             </ng-template>
           </div>
-          <div class="list-Container_Comment">
-            <p class="far fa-comment-dots"></p>
-            <span>&nbsp;{{post.comments_length}}</span>
+          <div class="list-Container_ItemBottomRight" [routerLink]="['/detail', post.id]">
+            <div class="list-Container_Comment">
+              <p class="far fa-comment-dots"></p>
+              <span>&nbsp;{{post.comments.length}}</span>
+            </div>
           </div>
-          <div class="list-Container_Account">
+          <div [routerLink]="['/account', post.User.id]" class="list-Container_Account">
             <p>{{post.User.name}}</p>
           </div>
-          <div class="list-Container_Date">
+          <div [routerLink]="['/detail', post.id]" class="list-Container_Date">
             <p>{{ post.created_at | date: "yyyy/MM/dd hh:mm" }}</p>
           </div>
         </div>

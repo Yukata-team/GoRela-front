@@ -32,22 +32,26 @@
     <div class="detail-Container_ItemBottom">
       <div class="detail-Container_Favorite">
         <ng-container *ngIf="post.favo_status;else noFavo">
-          <p (click)="deleteFavo(post)" class="favorite">いいね&nbsp;{{post.favorites.length}}</p>
+          <p (click)="deleteFavo(post)" class="favorite">いいね&nbsp;{{post.favorites_length}}</p>
         </ng-container>
         <ng-template #noFavo>
-          <p (click)="addFavo(post)">いいね&nbsp;{{post.favorites.length}}</p>
+          <p (click)="addFavo(post)">いいね&nbsp;{{post.favorites_length}}</p>
         </ng-template>
       </div>
       <div class="detail-Container_Comment">
         <p class="far fa-comment-dots"></p>
         <span>&nbsp;{{post.comments.length}}</span>
       </div>
-      <div class="detail-Container_Account">
+      <div [routerLink]="['/account', post.User.id]" class="detail-Container_Account">
         <p>{{post.User.name}}</p>
       </div>
       <div class="detail-Container_Date">
         <p>{{ post.created_at | date: "yyyy/MM/dd hh:mm" }}</p>
       </div>
+      <ng-container *ngIf="currentUserId==post.User.id">
+        <div (click)="delete()" class="detail-Container_Delete">
+        </div>
+      </ng-container>  
     </div>
   </div>
   <app-comments [post]="post"></app-comments>

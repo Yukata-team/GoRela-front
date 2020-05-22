@@ -1,3 +1,4 @@
+import { UserEditComponent } from './components/user-edit/user-edit.component';
 import { DetailComponent } from './components/detail/detail.component';
 import { RankingComponent } from './components/ranking/ranking.component';
 import { AccountComponent } from './components/account/account.component';
@@ -41,6 +42,14 @@ const routes: Routes = [
   {
     path: 'account',
     component: AccountComponent,
+  },
+  {
+    path: 'account/:id',
+    component: AccountComponent,
+  },
+  {
+    path: 'account/edit/:id',
+    component: UserEditComponent,
   },
 ];
 
