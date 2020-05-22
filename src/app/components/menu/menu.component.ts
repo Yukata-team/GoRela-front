@@ -12,4 +12,8 @@ export class MenuComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  logout(){
+    sessionStorage.removeItem('current_user_id');
+  }
+
 }
