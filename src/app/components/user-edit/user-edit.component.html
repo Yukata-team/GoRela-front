@@ -1,0 +1,29 @@
+<div class="userEdit-Main center">
+  <div class="userEdit-Main_Card card">
+    <div class="userEdit-Main_Border"></div>
+    <div class="userEdit-Main_Form">
+      <form>
+        <div class="userEdit-Main_Name">
+          <input
+            type="text"
+            placeholder="ニックネーム"
+            [(ngModel)]="user_name"
+            name="userName"
+          />
+        </div>
+        <div class="userEdit-Main_Introduction">
+          <textarea
+          id="userIntroduction"
+          type="text"
+          name="userIntroduction"
+          placeholder="自己紹介"
+          [(ngModel)]="user_introduction"
+          ></textarea>
+        </div>
+        <div class="userEdit-Main_Button">
+          <button (click)="edit()">編集完了</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
