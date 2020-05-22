@@ -11,6 +11,10 @@
     &:hover {
       box-shadow: 0 0 15px $shadow-color;
     }
+
+    &:first-child{
+      margin-top: 50px;
+    }
   }
 
   &_Inner{}
@@ -117,6 +121,13 @@
   &_Account {
     margin-left: auto;
     margin-right: 20px;
+
+    p{
+      &:hover{
+        opacity: 0.5;
+        cursor: pointer;
+      }
+    }
   }
 
   .favorite{

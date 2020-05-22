@@ -42,7 +42,7 @@
         <p class="far fa-comment-dots"></p>
         <span>&nbsp;{{post.comments.length}}</span>
       </div>
-      <div class="detail-Container_Account">
+      <div [routerLink]="['/account', post.User.id]" class="detail-Container_Account">
         <p>{{post.User.name}}</p>
       </div>
       <div class="detail-Container_Date">

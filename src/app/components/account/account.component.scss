@@ -21,11 +21,21 @@
   }
 
   &_MiddleInfo{
-    padding: 10px 20px;
+    display: flex;
+    padding: 30px 20px 10px;
+
+    & > div{
+      &:not(:first-child){
+        margin-left: 20px;
+      }
+
+      &:nth-child(4){
+        margin-left: auto;
+      }
+    }
   }
 
   &_PostCount{
-    width: 2em;
     text-align: center;
     p{
       font-size: 12px;
@@ -35,6 +45,53 @@
   &_PostText{
     p{
       color: $sub-color;
+    }
+  }
+
+  &_FollowCount{
+    text-align: center;
+    p{
+      font-size: 12px;
+    }
+  }
+
+  &_FollowText{
+    p{
+      color: $sub-color;
+    }
+  }
+
+  &_FollowerCount{
+    text-align: center;
+    p{
+      font-size: 12px;
+    }
+  }
+
+  &_FollowerText{
+    p{
+      color: $sub-color;
+    }
+  }
+
+  &_FollowButton{
+    padding: 0 10px;
+    border: 1px solid $base-color;
+    border-radius: 20px;
+    line-height: 36px;
+    transition: 0.3s;
+
+    p{
+      color: $base-color;
+    }
+
+    &:hover{
+      background-color: $base-color;
+      cursor: pointer;
+
+      p{
+        color: white;
+      }
     }
   }
 
@@ -162,9 +219,8 @@
     }
   }
 
-  &_Account {
+  &_Date {
     margin-left: auto;
-    margin-right: 20px;
   }
 
   .favorite{

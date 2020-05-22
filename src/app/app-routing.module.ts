@@ -42,6 +42,10 @@ const routes: Routes = [
     path: 'account',
     component: AccountComponent,
   },
+  {
+    path: 'account/:id',
+    component: AccountComponent,
+  },
 ];
 
 @NgModule({
