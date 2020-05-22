@@ -126,7 +126,6 @@
     display: flex;
     align-items: center;
     margin: 0 30px;
-    padding: 10px 0;
     p {
       font-size: 10px;
       color: $sub-color;
@@ -134,7 +133,7 @@
   }
 
   &_Favorite {
-    margin-right: 20px;
+    padding: 10px 0;
 
     p{
       &:hover{
@@ -142,6 +141,12 @@
         cursor: pointer;
       }
     }
+  }
+
+  &_ItemBottomRight{
+    display: flex;
+    flex: 1;
+    padding: 10px 0 10px 20px;
   }
 
   &_Comment {
