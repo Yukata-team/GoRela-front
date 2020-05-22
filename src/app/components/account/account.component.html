@@ -4,6 +4,10 @@
       <div class="account-Container_Name">
         <p>{{user.name}}</p>
       </div>
+      <ng-container *ngIf="isSameUser()">
+        <div [routerLink]="['/account/edit', user.id]" class="account-Container_Edit">
+        </div>
+      </ng-container>      
     </div>
     <div class="account-Container_MiddleInfo">
       <div class="account-Container_PostCount">
@@ -45,7 +49,7 @@
     </div>
     <div class="account-Container_BottomInfo">
       <div class="account-Container_UserDetail">
-        <p></p>
+        <p>{{user.introduction}}</p>
       </div>
     </div>
   </div>

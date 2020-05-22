@@ -57,4 +57,18 @@ export class UserService {
       catchError(this.error.handleError<any>('cannot UnfollowUser'))
     );
   }
+
+  getEditUser(user_id: number): Observable<any>{
+    return this.http.get(`${this.url}/${user_id}/edit`).pipe(
+      tap(() => this.log('get edituser!!!!!')),
+      catchError(this.error.handleError<any>('cannot getEditUser'))
+    );
+  }
+
+  editUser(user: User): Observable<any>{
+    return this.http.put(this.url, {name: user.name, introduction: user.introduction}, String(user.id)).pipe(
+      tap(() => this.log('edit user!!!!!')),
+      catchError(this.error.handleError<any>('cannot EditUser'))
+    );
+  }
 }

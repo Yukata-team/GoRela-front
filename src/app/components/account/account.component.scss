@@ -9,14 +9,32 @@
   }
 
   &_TopInfo{
+    display: flex;
     padding: 10px 0;
   }
 
   &_Name{
+    flex: 1;
     padding: 0 10px;
     p{
       font-size: 20px;
-      // font-weight: bold;
+    }
+  }
+
+  &_Edit{
+    padding: 0 10px;
+    cursor: pointer;
+    transition: 0.5s;
+    &::before{
+      content: "\f4ff";
+      font-family: "Font Awesome 5 Free";
+      font-weight: 900;
+      color: $sub-color;
+      font-size: 20px;
+    }
+
+    &:hover{
+      opacity: 0.5;
     }
   }
 

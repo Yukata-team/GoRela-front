@@ -18,6 +18,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RankingComponent } from './components/ranking/ranking.component';
 import { SearchComponent } from './components/search/search.component';
+import { UserEditComponent } from './components/user-edit/user-edit.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { SearchComponent } from './components/search/search.component';
     CommentsComponent,
     RankingComponent,
     SearchComponent,
+    UserEditComponent,
   ],
   imports: [
     BrowserModule,
