@@ -3,7 +3,7 @@ import { TaskService } from './../../services/task.service';
 import { Post, Task, Favorite } from './../../models/index';
 import { PostService } from './../../services/post.service';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-detail',
@@ -19,14 +19,15 @@ export class DetailComponent implements OnInit {
   public currentUserId = sessionStorage.getItem('current_user_id');
 
   constructor(
-    private route: ActivatedRoute,
+    private activatedroute: ActivatedRoute,
     private postService: PostService,
     private taskService: TaskService,
-    private favoriteService: FavoriteService
+    private favoriteService: FavoriteService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
-    this.route.params.subscribe((params) => {
+    this.activatedroute.params.subscribe((params) => {
       this.id = params['id'];
     });
 
@@ -77,6 +78,12 @@ export class DetailComponent implements OnInit {
       }
     });
     return result;
+  }
+
+  delete(){
+    this.postService.deletePost(this.post.id).subscribe(
+      () => this.router.navigate(['list'])
+    );
   }
 
 }

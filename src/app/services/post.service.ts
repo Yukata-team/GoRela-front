@@ -40,4 +40,11 @@ export class PostService {
       catchError(this.error.handleError('cannot updatePost'))
     );
   }
+
+  deletePost(post_id: number){
+    return this.http.delete(this.url, String(post_id)).pipe(
+      tap(() => console.log('deletePost')),
+      catchError(this.error.handleError('cannot deletePost'))
+    )
+  }
 }
