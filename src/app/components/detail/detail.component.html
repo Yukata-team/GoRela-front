@@ -48,6 +48,10 @@
       <div class="detail-Container_Date">
         <p>{{ post.created_at | date: "yyyy/MM/dd hh:mm" }}</p>
       </div>
+      <ng-container *ngIf="currentUserId==post.User.id">
+        <div (click)="delete()" class="detail-Container_Delete">
+        </div>
+      </ng-container>  
     </div>
   </div>
   <app-comments [post]="post"></app-comments>
