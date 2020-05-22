@@ -29,7 +29,7 @@
       >
         <p>アカウント</p>
       </a>
-      <a [routerLink]="['']" class="menu-Container_Item center">
+      <a (click)="logout()" [routerLink]="['']" class="menu-Container_Item center">
         <p>ログアウト</p>
       </a>
     </div>
