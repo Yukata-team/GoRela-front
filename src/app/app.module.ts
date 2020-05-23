@@ -19,6 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RankingComponent } from './components/ranking/ranking.component';
 import { SearchComponent } from './components/search/search.component';
 import { UserEditComponent } from './components/user-edit/user-edit.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { UserEditComponent } from './components/user-edit/user-edit.component';
     RankingComponent,
     SearchComponent,
     UserEditComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,

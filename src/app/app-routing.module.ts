@@ -1,3 +1,4 @@
+import { NotFoundComponent } from './components/not-found/not-found.component';
 import { UserEditComponent } from './components/user-edit/user-edit.component';
 import { DetailComponent } from './components/detail/detail.component';
 import { RankingComponent } from './components/ranking/ranking.component';
@@ -50,6 +51,10 @@ const routes: Routes = [
   {
     path: 'account/edit/:id',
     component: UserEditComponent,
+  },
+  {
+    path: '**',
+    component: NotFoundComponent,
   },
 ];
 
