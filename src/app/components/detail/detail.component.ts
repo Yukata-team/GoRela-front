@@ -86,4 +86,20 @@ export class DetailComponent implements OnInit {
     );
   }
 
+  checkedTasksLength(): number{
+    let length: number = 0;
+    this.post['tasks'].forEach(value => {
+      if(value['is_done']) length++;
+    });
+    return length;
+  }
+
+  isReach(): boolean{
+    return this.post.tasks.length - this.checkedTasksLength() === 1;
+  }
+
+  isAchievement(): boolean{
+    return this.post.tasks.length - this.checkedTasksLength() === 0;
+  }
+
 }

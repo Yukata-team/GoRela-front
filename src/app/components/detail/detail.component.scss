@@ -8,6 +8,58 @@
     transition: 0.3s;
   }
 
+  .is-reach{
+    .detail-Container_Title{
+      background-color: $reach-color;
+    }
+    .detail-Container_Task{
+      .not-checked {
+        &::before {
+          border: 1px solid $reach-color;
+        }
+      }
+      .checked {
+        &::before {
+          color: $reach-color;
+        }
+      }
+    }
+    .is-currentuser{
+      &:hover{
+        border: 1px solid $reach-color;
+      }
+    }
+    .favorite{
+      color: $reach-color;
+    }
+  }
+
+  .is-achievement{
+    .detail-Container_Title{
+      background-color: $achievement-color;
+    }
+    .detail-Container_Task{
+      .not-checked {
+        &::before {
+          border: 1px solid $achievement-color;
+        }
+      }
+      .checked {
+        &::before {
+          color: $achievement-color;
+        }
+      }
+    }
+    .is-currentuser{
+      &:hover{
+        border: 1px solid $achievement-color;
+      }
+    }
+    .favorite{
+      color: $achievement-color;
+    }
+  }
+
   &_Title {
     height: 3em;
     padding: 0 10px;
@@ -33,7 +85,7 @@
     }
 
     &:hover{
-      color: $base-color;
+      opacity: 0.5;
     }
   }
 
@@ -63,14 +115,17 @@
   &_Task {
     position: relative;
     padding-left: 30px;
-    margin-bottom: 20px;
-    cursor: pointer;
+    margin-bottom: 2px;
+    height: 40px;
+    p{
+      line-height: 40px;
+    }
 
     .not-checked {
       &::before {
         position: absolute;
         top: calc(50% - 8px);
-        left: 0;
+        left: 5px;
         height: 12px;
         width: 12px;
         border: 1px solid $base-color;
@@ -86,12 +141,16 @@
         font-weight: 900;
         color: $base-color;
         position: absolute;
-        top: calc(50% - 8px);
-        left: 0;
-        height: 12px;
-        width: 12px;
-        background-color: white;
+        left: 5px;
       }
+    }
+  }
+
+  .is-currentuser{
+    border-radius: 10px;
+    cursor: pointer;
+    &:hover{
+      border: 1px solid $base-color;
     }
   }
 
@@ -133,6 +192,7 @@
   &_Account {
     margin-left: auto;
     margin-right: 20px;
+    transition: 0.3s;
 
     p{
       &:hover{

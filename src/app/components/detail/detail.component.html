@@ -1,5 +1,9 @@
 <div class="detail-Container">
-  <div class="detail-Container_Item card">
+  <div 
+    class="detail-Container_Item card"
+    [class.is-reach]="isReach()"
+    [class.is-achievement]="isAchievement()"
+  >
     <div class="detail-Container_Title">
       <h1>{{ post.title }}</h1>
     </div>
@@ -19,24 +23,26 @@
     </div>
     <div class="detail-Container_Tasks">
       <ng-container *ngFor="let task of post.tasks">
-        <div class="detail-Container_Task">
-          <ng-container *ngIf="currentUserId==post.User.id;else notCrrentUser">
+        <ng-container *ngIf="currentUserId==post.User.id;else notCrrentUser">
+          <div class="detail-Container_Task is-currentuser">
             <ng-container *ngIf="task.is_done;else isntDone">
               <p class="checked" (click)="uncheck(task)">{{ task.content }}</p>
             </ng-container>
             <ng-template #isntDone>
               <p class="not-checked" (click)="check(task)">{{ task.content }}</p>
             </ng-template>
-          </ng-container>
-          <ng-template #notCrrentUser>
+          </div>
+        </ng-container>
+        <ng-template #notCrrentUser>
+          <div class="detail-Container_Task">
             <ng-container *ngIf="task.is_done;else isntDone">
               <p class="checked">{{ task.content }}</p>
             </ng-container>
             <ng-template #isntDone>
               <p class="not-checked">{{ task.content }}</p>
             </ng-template>
-          </ng-template>
-        </div>
+          </div>
+        </ng-template>
       </ng-container>
     </div>
     <div class="detail-Container_ItemBottom">
