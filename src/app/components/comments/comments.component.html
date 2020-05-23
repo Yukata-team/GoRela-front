@@ -17,14 +17,8 @@
           <p>{{ comment.content }}</p>
         </div>
         <div class="comments-Container_ItemBottom">
-          <div class="comments-Container_Favorite">
-            <p>いいね</p>
-          </div>
-          <div class="comments-Container_Comment">
-            <p class="far fa-comment-dots"></p>
-          </div>
-          <div class="comments-Container_Account">
-            <p>あ</p>
+          <div class="comments-Container_Account" [routerLink]="['/account', comment.user.id]">
+            <p>{{comment.user.name}}</p>
           </div>
           <div class="comments-Container_Date">
             <p>{{ comment.created_at | date: "yyyy/MM/dd hh:mm" }}</p>
