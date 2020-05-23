@@ -51,23 +51,33 @@ export class DetailComponent implements OnInit {
 
   addFavo(post){
     console.log("addFavo!!");
-    this.favoriteService.addFavo(post.id).subscribe(
-      (res) => {
-        post['favo_status'] = !post['favo_status'];
-        post['favorites_length']++;
-        console.log(`add=favo_status:${post.favo_status}`);
-      }
-    );
+    if(!this.currentUserId){
+      this.router.navigate(['register']);
+    }
+    else{
+      this.favoriteService.addFavo(post.id).subscribe(
+        (res) => {
+          post['favo_status'] = !post['favo_status'];
+          post['favorites_length']++;
+          console.log(`add=favo_status:${post.favo_status}`);
+        }
+      );
+    }
   }
 
   deleteFavo(post){
-    this.favoriteService.deleteFavo(post.id).subscribe(
-      (res) => {
-        post['favo_status'] = !post['favo_status'];
-        post['favorites_length']--;
-        console.log(`delete=favo_status:${post.favo_status}`);
-      }
-    );
+    if(!this.currentUserId){
+      this.router.navigate(['register']);
+    }
+    else{
+      this.favoriteService.deleteFavo(post.id).subscribe(
+        (res) => {
+          post['favo_status'] = !post['favo_status'];
+          post['favorites_length']--;
+          console.log(`delete=favo_status:${post.favo_status}`);
+        }
+      );
+    }
   }
 
   isFavo(post_favorites): boolean{

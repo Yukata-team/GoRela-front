@@ -1,4 +1,4 @@
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TaskService } from './../../services/task.service';
 import { FavoriteService } from './../../services/favorite.service';
 import { User, Task } from './../../models/index';
@@ -26,8 +26,8 @@ export class AccountComponent implements OnInit {
   constructor(
     private userService: UserService,
     private favoriteService: FavoriteService,
-    private taskService: TaskService,
     private activatedRoute: ActivatedRoute,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -37,8 +37,13 @@ export class AccountComponent implements OnInit {
     });
 
     if(!this.user_id){
-      this.user_id = this.currentUserId;
-      console.log(this.user_id);
+      if(!this.currentUserId){
+        this.router.navigate(['register']);
+      }
+      else{
+        this.user_id = this.currentUserId;
+        console.log(this.user_id);
+      }  
     }
 
     this.userService.getUser(this.user_id).subscribe(
@@ -53,28 +58,37 @@ export class AccountComponent implements OnInit {
       this.followers_length = this.user.followers.length;
       this.follow_status = this.isFollow();
     });
-
   }
 
   addFavo(post){
     console.log("addFavo!");
-    this.favoriteService.addFavo(post.id).subscribe(
-      (res) => {
-        post['favo_status'] = !post['favo_status'];
-        post['favorites_length']++;
-        console.log(`add=favo_status:${post.favo_status}`);
-      }
-    );
+    if(!this.currentUserId){
+      this.router.navigate(['register']);
+    }
+    else{
+      this.favoriteService.addFavo(post.id).subscribe(
+        (res) => {
+          post['favo_status'] = !post['favo_status'];
+          post['favorites_length']++;
+          console.log(`add=favo_status:${post.favo_status}`);
+        }
+      );
+    }
   }
 
   deleteFavo(post){
-    this.favoriteService.deleteFavo(post.id).subscribe(
-      (res) => {
-        post['favo_status'] = !post['favo_status'];
-        post['favorites_length']--;
-        console.log(`delete=favo_status:${post.favo_status}`);
-      }
-    );
+    if(!this.currentUserId){
+      this.router.navigate(['register']);
+    }
+    else{
+      this.favoriteService.deleteFavo(post.id).subscribe(
+        (res) => {
+          post['favo_status'] = !post['favo_status'];
+          post['favorites_length']--;
+          console.log(`delete=favo_status:${post.favo_status}`);
+        }
+      );
+    }
   }
 
   isFavo(post_favorites): boolean{
@@ -88,17 +102,27 @@ export class AccountComponent implements OnInit {
   }
 
   follow(){
-    this.userService.followUser(this.user.id).subscribe((res) => {
-      this.followers_length++;
-      this.follow_status = !this.follow_status;
-    });
+    if(!this.currentUserId){
+      this.router.navigate(['register']);
+    }
+    else{
+      this.userService.followUser(this.user.id).subscribe((res) => {
+        this.followers_length++;
+        this.follow_status = !this.follow_status;
+      });
+    }
   }
 
   unfollow(){
-    this.userService.unfollowUser(this.user.id).subscribe((res) => {
-      this.followers_length--;
-      this.follow_status = !this.follow_status;
-    });
+    if(!this.currentUserId){
+      this.router.navigate(['register']);
+    }
+    else{
+      this.userService.unfollowUser(this.user.id).subscribe((res) => {
+        this.followers_length--;
+        this.follow_status = !this.follow_status;
+      });
+    }
   }
 
   isFollow(): boolean{

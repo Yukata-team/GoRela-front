@@ -23,8 +23,8 @@
       color: $sub-color;
 
       &:hover {
-        color: $base-color;
-        background-color: white;
+        background: none;
+        opacity: 0.5;
       }
     }
   }
@@ -65,5 +65,12 @@
   &_Account {
     margin-left: auto;
     margin-right: 20px;
+
+    p{
+      &:hover{
+        opacity: 0.5;
+        cursor: pointer;
+      }
+    }
   }
 }
