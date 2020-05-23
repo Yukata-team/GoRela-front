@@ -115,4 +115,20 @@ export class AccountComponent implements OnInit {
   isSameUser(): boolean{
     return this.currentUserId == this.user_id;
   }
+
+  checkedTasksLength(post: any): number{
+    let length: number = 0;
+    post['tasks'].forEach(value => {
+      if(value['is_done']) length++;
+    });
+    return length;
+  }
+
+  isReach(post: any): boolean{
+    return post.tasks.length - this.checkedTasksLength(post) === 1;
+  }
+
+  isAchievement(post: any): boolean{
+    return post.tasks.length - this.checkedTasksLength(post) === 0;
+  }
 }
