@@ -90,6 +90,29 @@
     }
   }
 
+  &_Last{
+    position: relative;
+    padding: 5px 20px;
+    font-weight: bold;
+    width: 120px;
+    background-color: $reach-color;
+
+    p{
+      color: white;
+    }
+
+    &::after{
+      content: '';
+      position: absolute;
+      top: 4.5px;
+      left: 108px;
+      height: 23.334px;
+      width: 23.334px;
+      background-color: white;
+      transform: rotate(45deg);
+    }
+  }
+
   &_Tasks {
     padding: 30px;
   }
@@ -121,9 +144,6 @@
         position: absolute;
         top: calc(50% - 8px);
         left: 0;
-        height: 12px;
-        width: 12px;
-        background-color: white;
       }
     }
   }
