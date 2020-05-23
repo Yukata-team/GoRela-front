@@ -127,6 +127,58 @@
     }
   }
 
+  .is-reach{
+    .account-Container_Title{
+      background-color: $reach-color;
+    }
+    .account-Container_Task{
+      .not-checked {
+        &::before {
+          border: 1px solid $reach-color;
+        }
+      }
+      .checked {
+        &::before {
+          color: $reach-color;
+        }
+      }
+    }
+    .is-currentuser{
+      &:hover{
+        border: 1px solid $reach-color;
+      }
+    }
+    .favorite{
+      color: $reach-color;
+    }
+  }
+
+  .is-achievement{
+    .account-Container_Title{
+      background-color: $achievement-color;
+    }
+    .account-Container_Task{
+      .not-checked {
+        &::before {
+          border: 1px solid $achievement-color;
+        }
+      }
+      .checked {
+        &::before {
+          color: $achievement-color;
+        }
+      }
+    }
+    .is-currentuser{
+      &:hover{
+        border: 1px solid $achievement-color;
+      }
+    }
+    .favorite{
+      color: $achievement-color;
+    }
+  }
+
   &_Title {
     height: 3em;
     padding: 0 10px;

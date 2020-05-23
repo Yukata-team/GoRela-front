@@ -55,7 +55,11 @@
   </div>
   <div class="account-Container_Posts">
     <ng-container *ngFor="let post of user.posts">
-      <div class="account-Container_Post card">
+      <div
+        class="account-Container_Post card"
+        [class.is-reach]="isReach(post)"
+        [class.is-achievement]="isAchievement(post)"
+      >
         <div [routerLink]="['/detail', post.id]" class="list-Container_Inner">
           <div class="account-Container_Title">
             <h1>{{ post.title }}</h1>
