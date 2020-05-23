@@ -21,12 +21,15 @@
         </ng-container>
       </p>
     </div>
+    <div class="detail-Container_Last" *ngIf="isReach()">
+      <p>Last One</p>
+    </div>
     <div class="detail-Container_Tasks">
       <ng-container *ngFor="let task of post.tasks">
         <ng-container *ngIf="currentUserId==post.User.id;else notCrrentUser">
           <div class="detail-Container_Task is-currentuser">
             <ng-container *ngIf="task.is_done;else isntDone">
-              <p class="checked" (click)="uncheck(task)">{{ task.content }}</p>
+              <p class="checked opacity" (click)="uncheck(task)">{{ task.content }}</p>
             </ng-container>
             <ng-template #isntDone>
               <p class="not-checked" (click)="check(task)">{{ task.content }}</p>

@@ -78,11 +78,14 @@
               </ng-container>
             </p>
           </div>
+          <div class="account-Container_Last" *ngIf="isReach(post)">
+            <p>Last One</p>
+          </div>
           <div class="account-Container_Tasks">
             <ng-container *ngFor="let task of post.tasks">
               <div class="account-Container_Task">
                 <ng-container *ngIf="task.is_done;else isntDone">
-                  <p class="checked">{{ task.content }}</p>
+                  <p class="checked opacity">{{ task.content }}</p>
                 </ng-container>
                 <ng-template #isntDone>
                   <p class="not-checked">{{ task.content }}</p>
