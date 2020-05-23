@@ -23,8 +23,8 @@
       color: $sub-color;
 
       &:hover {
-        color: $base-color;
-        background-color: white;
+        background: none;
+        opacity: 0.5;
       }
     }
   }

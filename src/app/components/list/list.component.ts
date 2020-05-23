@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { FavoriteService } from './../../services/favorite.service';
 import { TaskService } from './../../services/task.service';
 import { Post, Favorite } from './../../models/index';
@@ -18,7 +19,8 @@ export class ListComponent implements OnInit {
 
   constructor(
     private postService: PostService,
-    private favoriteService: FavoriteService
+    private favoriteService: FavoriteService,
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -36,25 +38,35 @@ export class ListComponent implements OnInit {
 
   addFavo(post){
     console.log("addFavo!");
-    this.favoriteService.addFavo(post.id).subscribe(
-      (res) => {
-        post['favo_status'] = !post['favo_status'];
-        post['favorites_length']++;
-        console.log(post['favorites_length'])
-        console.log(`add=favo_status:${post.favo_status}`);
-      }
-    );
+    if(!this.currentUserId){
+      this.router.navigate(['register']);
+    }
+    else{
+      this.favoriteService.addFavo(post.id).subscribe(
+        (res) => {
+          post['favo_status'] = !post['favo_status'];
+          post['favorites_length']++;
+          console.log(post['favorites_length'])
+          console.log(`add=favo_status:${post.favo_status}`);
+        }
+      );
+    }
   }
 
   deleteFavo(post){
-    this.favoriteService.deleteFavo(post.id).subscribe(
-      (res) => {
-        post['favo_status'] = !post['favo_status'];
-        post['favorites_length']--;
-        console.log(post['favorites_length'])
-        console.log(`delete=favo_status:${post.favo_status}`);
-      }
-    );
+    if(!this.currentUserId){
+      this.router.navigate(['register']);
+    }
+    else{
+      this.favoriteService.deleteFavo(post.id).subscribe(
+        (res) => {
+          post['favo_status'] = !post['favo_status'];
+          post['favorites_length']--;
+          console.log(post['favorites_length'])
+          console.log(`delete=favo_status:${post.favo_status}`);
+        }
+      );
+    }
   }
 
   isFavo(post_favorites): boolean{

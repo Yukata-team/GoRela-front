@@ -12,6 +12,8 @@ export class CreateComponent implements OnInit {
   private newPost;
   private newTask = [];
 
+  public currentUserId = sessionStorage.getItem('current_user_id');
+
   postTitle;
   postLimit;
   postDetail;
@@ -24,7 +26,11 @@ export class CreateComponent implements OnInit {
     private router: Router
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if(!this.currentUserId){
+      this.router.navigate(['register']);
+    }
+  }
 
   create() {
     console.log('create');

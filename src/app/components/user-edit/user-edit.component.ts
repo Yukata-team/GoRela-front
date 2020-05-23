@@ -13,6 +13,7 @@ export class UserEditComponent implements OnInit {
   public user;
   public user_name: string;
   public user_introduction: string;
+  public currentUserId = sessionStorage.getItem('current_user_id');
 
   constructor(
     private userService: UserService,
@@ -21,17 +22,27 @@ export class UserEditComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe((params) => {
-      this.user_id = params['id'];
-    });
+    if(!this.currentUserId){
+      this.router.navigate(['register']);
+    }
+    else{
+      this.activatedRoute.params.subscribe((params) => {
+        this.user_id = params['id'];
+      });
 
-    this.userService.getEditUser(this.user_id).subscribe(
-      (res) => {
-        this.user = res;
-        this.user_name = res.name;
-        this.user_introduction = res.introduction;
+      if(String(this.user_id)===this.currentUserId){
+        this.userService.getEditUser(this.user_id).subscribe(
+          (res) => {
+            this.user = res;
+            this.user_name = res.name;
+            this.user_introduction = res.introduction;
+          }
+        );
       }
-    )
+      else{
+        this.router.navigate(['account']);
+      }
+    }
   }
 
   edit(){
