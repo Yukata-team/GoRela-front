@@ -6,9 +6,10 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class HttpService {
-  // private apiUrl = 'http://localhost:1323';
+  // private apiUrl = 'http://localhost:80';
   // private apiUrl = 'https://54.225.116.229:1323';
-  private apiUrl = 'https://gorela.work';
+  // private apiUrl = 'https://gorela.work';
+  private apiUrl = 'http://13.112.231.197';
   private accessToken = localStorage.getItem('access_token');
   private httpOptions = {
     headers: new HttpHeaders({
