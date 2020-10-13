@@ -20,6 +20,7 @@ import { RankingComponent } from './components/ranking/ranking.component';
 import { SearchComponent } from './components/search/search.component';
 import { UserEditComponent } from './components/user-edit/user-edit.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { BubbleDirective } from './directives/bubble.directive';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     SearchComponent,
     UserEditComponent,
     NotFoundComponent,
+    BubbleDirective,
   ],
   imports: [
     BrowserModule,
